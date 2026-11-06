@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Source Serif 4 Variable", Georgia, serif;
+
+  --color-paper: #f7f6f2;
+  --color-ink: #1c2421;
+  --color-muted: #5b6662;
+  --color-line: #dcdcd4;
+  --color-soft: #eeede6;
+  --color-accent: #2f6b55;
+  --color-accent-soft: #e3ece6;
+}
+
+@layer base {
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    @apply bg-paper text-ink font-sans antialiased;
+    font-feature-settings: "cv11", "ss01";
+  }
+  h1, h2, h3 { @apply font-serif text-ink; text-wrap: balance; }
+  p, li { text-wrap: pretty; }
+  a { @apply underline-offset-2; }
+  :focus-visible { @apply outline-2 outline-offset-2 outline-accent; }
+  ::selection { background: var(--color-accent-soft); }
+}
+
+@layer components {
+  .prose-hc > * + * { margin-top: 1rem; }
+  .prose-hc p, .prose-hc li { @apply text-[1.0625rem] leading-7 text-ink/90; }
+  .prose-hc h2 { @apply text-2xl font-semibold mt-14 mb-1; }
+  .prose-hc h3 { @apply text-lg font-semibold mt-8; }
+  .prose-hc a { @apply text-accent underline; }
+  .prose-hc ul { @apply list-disc pl-5 space-y-1.5; }
+  .prose-hc ol { @apply list-decimal pl-5 space-y-1.5; }
+  .link { @apply text-accent underline hover:no-underline; }
+  .table-hc { @apply w-full text-left text-[0.95rem] border-collapse; }
+  .table-hc th { @apply font-semibold text-muted text-xs uppercase tracking-wide py-2 pr-4 border-b border-line align-bottom; }
+  .table-hc td { @apply py-3 pr-4 border-b border-line align-top leading-6; }
+}
+
+/* Barre de défilement discrète pour les rangées de la démo */
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { scroll-behavior: auto !important; transition: none !important; }
+}
