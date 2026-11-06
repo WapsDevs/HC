@@ -2,3 +2,5 @@ node_modules/
 dist/
 .DS_Store
 *.log
+.claude/
+/HC_document_de_travail_v0_1.pdf
