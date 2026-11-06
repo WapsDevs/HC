@@ -8,7 +8,7 @@ const T = {
   fr: {
     eyebrow: 'Secteurs',
     title: 'Un même cadre, des métiers différents',
-    lead: 'Chaque secteur a sa propre chaîne de fabrication. Voici des points de départ pour huit d’entre eux, à adapter à chaque projet.',
+    lead: 'Chaque secteur a sa propre chaîne de fabrication. Voici des points de départ pour sept d’entre eux, à adapter à chaque projet.',
     jump: 'Aller au secteur',
     cols: ['Étape', 'Décisions humaines typiques', 'Usages génératifs possibles'],
     caveat: 'Les étapes viennent des sources citées. La colonne « usages possibles » donne des exemples : elle ne dit pas ce que font la plupart des studios.',
@@ -16,7 +16,7 @@ const T = {
   en: {
     eyebrow: 'Sectors',
     title: 'One framework, many crafts',
-    lead: 'Each field has its own production chain. Here are starting points for eight of them, to be adapted to each project.',
+    lead: 'Each field has its own production chain. Here are starting points for seven of them, to be adapted to each project.',
     jump: 'Go to sector',
     cols: ['Stage', 'Typical human decisions', 'Possible generative uses'],
     caveat: 'The stages come from the sources cited. The “possible uses” column gives examples: it does not describe what most studios do.',

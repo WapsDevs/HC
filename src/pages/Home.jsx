@@ -6,7 +6,7 @@ import { LEVELS, PDF_URL, REPO_URL, useLang } from '../i18n.js'
 const T = {
   fr: {
     title: 'Savoir quelle place l’humain a prise dans une œuvre',
-    lead: 'HC est une proposition ouverte. Elle permet d’indiquer, pour un film, un jeu, un livre ou un album, ce qui a été créé par des personnes et ce qui a été produit par l’IA générative.',
+    lead: 'HC est une proposition ouverte. Elle permet d’indiquer, pour un film, un jeu, un livre ou une bande dessinée, ce qui a été créé par des personnes et ce qui a été produit par l’IA générative.',
     ctaLevels: 'Découvrir les trois niveaux',
     ctaDemo: 'Voir la démo streaming',
     levelsTitle: 'Trois niveaux',
@@ -51,7 +51,7 @@ const T = {
   },
   en: {
     title: 'Knowing how much of a work was made by people',
-    lead: 'HC is an open proposal. It gives films, games, books and albums a simple way to show what was created by people and what was produced by generative AI.',
+    lead: 'HC is an open proposal. It gives films, games, books and comics a simple way to show what was created by people and what was produced by generative AI.',
     ctaLevels: 'See the three levels',
     ctaDemo: 'Try the streaming demo',
     levelsTitle: 'Three levels',
@@ -134,7 +134,7 @@ export default function Home() {
           <div>
             <h3 className="font-sans text-sm font-semibold text-muted mb-2">{t.notTitle}</h3>
             <ul className="space-y-2 leading-7 text-muted">
-              {t.nots.map((s) => <li key={s} className="flex gap-3"><span aria-hidden="true">–</span>{s}</li>)}
+              {t.nots.map((s) => <li key={s} className="flex gap-3"><span aria-hidden="true">×</span>{s}</li>)}
             </ul>
           </div>
         </div>

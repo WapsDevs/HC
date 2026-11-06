@@ -19,7 +19,7 @@ const T = {
     ],
     scopeTitle: 'D’abord, définir le périmètre',
     scope: [
-      'On évalue une œuvre précise : un film, une saison, un jeu dans une version donnée, un album, un livre.',
+      'On évalue une œuvre précise : un film, une saison, un jeu dans une version donnée, un livre.',
       'Une franchise ou une série de jeux ne reçoit pas un niveau unique. Une mise à jour majeure peut changer le niveau.',
       'Les contenus tiers sont signalés : musique sous licence, banque d’images, assets achetés, sous-traitance.',
     ],
@@ -56,17 +56,17 @@ const T = {
       'Proposer un niveau et le justifier en deux ou trois phrases.',
       'En cas de doute, ne pas attribuer HC+. Indiquer « non vérifié ».',
     ],
-    stepsNote: 'L’étape 3 est une hypothèse à tester. Le poids d’une étape varie selon les œuvres : la voix compte beaucoup dans un podcast, moins dans un jeu de stratégie.',
+    stepsNote: 'L’étape 3 est une hypothèse à tester. Le poids d’une étape varie selon les œuvres : les dialogues comptent beaucoup dans un film d’animation, moins dans un jeu de stratégie.',
     sheetTitle: 'Exemple de fiche',
     sheetAside: 'Œuvre fictive, pour illustrer le format.',
     sheetCols: ['Étape', 'Décider', 'Produire', 'Transformer', 'Valider'],
     sheetRows: [
-      ['Scénario', 'Humain', 'Humain', '—', 'Humain'],
+      ['Scénario', 'Humain', 'Humain', 'Rien à reprendre', 'Humain'],
       ['Storyboard', 'Humain', 'Partagé', 'Humain', 'Humain'],
       ['Décors', 'Humain', 'Génératif', 'Humain', 'Humain'],
-      ['Personnages', 'Humain', 'Humain', '—', 'Humain'],
-      ['Animation', 'Humain', 'Humain', '—', 'Humain'],
-      ['Musique', 'Humain', 'Humain', '—', 'Humain'],
+      ['Personnages', 'Humain', 'Humain', 'Rien à reprendre', 'Humain'],
+      ['Animation', 'Humain', 'Humain', 'Rien à reprendre', 'Humain'],
+      ['Bande originale', 'Humain', 'Humain', 'Rien à reprendre', 'Humain'],
     ],
     sheetVerdict: 'Niveau proposé : HC+. Les décors de fond sont générés puis repeints ; le reste de l’œuvre est conçu et fabriqué par l’équipe.',
     assistTitle: 'Génération ou assistance ?',
@@ -107,7 +107,7 @@ const T = {
     ],
     scopeTitle: 'First, define the scope',
     scope: [
-      'Assess one specific work: a film, a season, a game in a given version, an album, a book.',
+      'Assess one specific work: a film, a season, a game in a given version, a book.',
       'A franchise or a game series does not get a single level. A major update can change the level.',
       'Third-party content is listed: licensed music, stock images, purchased assets, subcontracted work.',
     ],
@@ -144,17 +144,17 @@ const T = {
       'Propose a level and justify it in two or three sentences.',
       'If in doubt, do not give HC+. Show “not verified”.',
     ],
-    stepsNote: 'Step 3 is a hypothesis to be tested. The weight of a stage varies: voice matters a lot in a podcast, less in a strategy game.',
+    stepsNote: 'Step 3 is a hypothesis to be tested. The weight of a stage varies: dialogue matters a lot in an animated film, less in a strategy game.',
     sheetTitle: 'Sample sheet',
     sheetAside: 'Fictional work, to show the format.',
     sheetCols: ['Stage', 'Decide', 'Produce', 'Rework', 'Approve'],
     sheetRows: [
-      ['Script', 'Human', 'Human', '—', 'Human'],
+      ['Script', 'Human', 'Human', 'Nothing to rework', 'Human'],
       ['Storyboard', 'Human', 'Shared', 'Human', 'Human'],
       ['Backgrounds', 'Human', 'Generative', 'Human', 'Human'],
-      ['Characters', 'Human', 'Human', '—', 'Human'],
-      ['Animation', 'Human', 'Human', '—', 'Human'],
-      ['Music', 'Human', 'Human', '—', 'Human'],
+      ['Characters', 'Human', 'Human', 'Nothing to rework', 'Human'],
+      ['Animation', 'Human', 'Human', 'Nothing to rework', 'Human'],
+      ['Soundtrack', 'Human', 'Human', 'Nothing to rework', 'Human'],
     ],
     sheetVerdict: 'Proposed level: HC+. Background scenes are generated and then repainted; the rest of the work is designed and made by the team.',
     assistTitle: 'Generation or assistance?',
@@ -238,7 +238,7 @@ export default function Method() {
               {t.sheetRows.map((r) => (
                 <tr key={r[0]}>
                   <td className="font-medium">{r[0]}</td>
-                  {r.slice(1).map((c, i) => <td key={i} className={c === 'Humain' || c === 'Human' ? '' : 'text-accent font-medium'}>{c}</td>)}
+                  {r.slice(1).map((c, i) => <td key={i} className={c === 'Humain' || c === 'Human' ? '' : c === t.sheetRows[0][3] ? 'text-muted' : 'text-accent font-medium'}>{c}</td>)}
                 </tr>
               ))}
             </tbody>

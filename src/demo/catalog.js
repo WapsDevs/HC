@@ -1,5 +1,7 @@
-// Catalogue FICTIF de la démonstration. Titres, studios, déclarations et évaluateur sont inventés.
-// Étapes : [nom { fr, en }, 'human' | 'shared' | 'gen', précision { fr, en }]
+// Catalogue de la démo : œuvres réelles.
+// Affiches : uniquement des fichiers du domaine public, copiés depuis Wikimedia Commons.
+// Pour les œuvres récentes, l'affiche n'est pas réutilisable : on renvoie vers une page officielle ou une source.
+// Les niveaux HC sont des HYPOTHÈSES du projet HC ; aucune de ces œuvres n'a fait de déclaration HC.
 
 export const CATEGORIES = {
   family: { fr: 'En famille', en: 'For the family' },
@@ -9,400 +11,248 @@ export const CATEGORIES = {
   scifi: { fr: 'Science-fiction', en: 'Science fiction' },
 }
 
+export const KINDS = {
+  film: { fr: 'Film', en: 'Film' },
+  short: { fr: 'Court métrage', en: 'Short film' },
+  series: { fr: 'Série', en: 'Series' },
+}
+
 const s = (fr, en) => ({ fr, en })
+const commons = (file) => `https://commons.wikimedia.org/wiki/File:${file}`
+
+// Résumé commun aux films muets : antérieurs de près d'un siècle aux outils génératifs.
+const classic = (year) => ({
+  level: 'plus',
+  summary: s(
+    `Œuvre de ${year}, bien antérieure aux outils d’IA générative. Toute la création est humaine.`,
+    `Made in ${year}, long before generative AI tools existed. All of the creative work is human.`,
+  ),
+  limits: s(
+    'Le niveau porte sur l’œuvre d’origine, pas sur d’éventuelles restaurations récentes.',
+    'The level covers the original work, not any recent restoration.',
+  ),
+})
 
 export const TITLES = [
   {
-    id: 'phare',
-    title: s('Le Phare des marées', 'The Tide Lighthouse'),
-    kind: 'film', year: 2026, length: '1 h 32', age: 'all',
-    categories: ['family', 'animation'],
-    scene: 'ocean', palette: ['#0f2a47', '#3f6f8f', '#173a55', '#f4d38a', '#0b2236'],
-    synopsis: s(
-      'Chaque nuit, Elio rallume le vieux phare de son île. Un soir, la lumière attire un bateau que personne n’attend.',
-      'Every night, Elio relights the old lighthouse on his island. One evening, its beam draws in a boat nobody expected.',
-    ),
-    studio: s('Atelier Brise (fictif)', 'Atelier Brise (fictional)'),
-    hc: {
-      level: 'plus', status: 'declared', date: '2026-03',
-      summary: s(
-        'Scénario, dessin et animation réalisés par l’équipe. L’IA générative a produit des textures de fond, repeintes ensuite.',
-        'Script, drawing and animation by the team. Generative AI produced background textures, which were then repainted.',
-      ),
-      stages: [
-        [s('Scénario', 'Script'), 'human', s('Écrit par deux scénaristes', 'Written by two screenwriters')],
-        [s('Storyboard', 'Storyboard'), 'human', s('Dessiné à la main', 'Hand-drawn')],
-        [s('Décors', 'Backgrounds'), 'shared', s('Textures générées, repeintes par les décoratrices', 'Generated textures, repainted by the background artists')],
-        [s('Animation', 'Animation'), 'human', s('Animation 2D image par image', 'Frame-by-frame 2D animation')],
-        [s('Voix et musique', 'Voices and music'), 'human', s('Comédiens et orchestre de chambre', 'Actors and a chamber orchestra')],
-      ],
-    },
-  },
-  {
-    id: 'cartographes',
-    title: s('Les Cartographes du ciel', 'Sky Cartographers'),
-    kind: 'series', year: 2025, length: s('2 saisons', '2 seasons'), age: '10',
-    categories: ['scifi', 'animation'],
-    scene: 'space', palette: ['#0b0d24', '#28235a', '#5a3f8f', '#f2a65a', '#1a1640'],
-    synopsis: s(
-      'Une équipe de jeunes navigateurs dresse la carte d’une galaxie inconnue, planète après planète.',
-      'A crew of young navigators maps an unknown galaxy, one planet at a time.',
-    ),
-    studio: s('Studio Nadir (fictif)', 'Studio Nadir (fictional)'),
-    hc: {
-      level: 'base', status: 'verified', date: '2025-11',
-      summary: s(
-        'L’histoire et l’animation des personnages sont humaines. Les décors spatiaux et une partie de la musique viennent de l’IA générative, retravaillés par l’équipe.',
-        'Story and character animation are human. Space backgrounds and part of the score come from generative AI, reworked by the team.',
-      ),
-      stages: [
-        [s('Écriture', 'Writing'), 'human', s('Salle d’écriture de quatre personnes', 'Four-person writers’ room')],
-        [s('Design des vaisseaux', 'Ship design'), 'shared', s('Concepts générés, modélisés en 3D par l’équipe', 'Generated concepts, modelled in 3D by the team')],
-        [s('Décors spatiaux', 'Space backgrounds'), 'gen', s('Générés puis étalonnés', 'Generated, then colour-graded')],
-        [s('Animation', 'Animation'), 'human', s('Animation 3D des personnages', '3D character animation')],
-        [s('Musique', 'Music'), 'shared', s('Thèmes composés, textures sonores générées', 'Composed themes, generated sound textures')],
-      ],
-    },
-  },
-  {
-    id: 'sable',
-    title: s('Le Sable qui chante', 'The Singing Sands'),
-    kind: 'film', year: 2025, length: '58 min', age: 'all',
-    categories: ['documentary'],
-    scene: 'desert', palette: ['#3a1f3d', '#d9825b', '#b85c3c', '#ffd8a0', '#7a3a2c'],
-    synopsis: s(
-      'Pourquoi certaines dunes émettent-elles un son grave quand le vent souffle ? Une enquête entre physique et récits de voyageurs.',
-      'Why do some dunes hum when the wind blows? An investigation between physics and travellers’ tales.',
-    ),
-    studio: s('Production Oasis (fictif)', 'Production Oasis (fictional)'),
-    hc: {
-      level: 'minus', status: 'declared', date: '2025-09',
-      summary: s(
-        'La plupart des images sont des reconstitutions générées. Le propos, les entretiens et la vérification scientifique sont humains.',
-        'Most images are generated reconstructions. The argument, the interviews and the scientific review are human.',
-      ),
-      stages: [
-        [s('Recherche', 'Research'), 'human', s('Avec deux physiciens', 'With two physicists')],
-        [s('Commentaire', 'Narration script'), 'shared', s('Premier jet généré, réécrit par la réalisatrice', 'Generated first draft, rewritten by the director')],
-        [s('Images', 'Images'), 'gen', s('Reconstitutions générées, choisies plan par plan', 'Generated reconstructions, chosen shot by shot')],
-        [s('Voix off', 'Voice-over'), 'gen', s('Voix de synthèse sous licence', 'Licensed synthetic voice')],
-        [s('Montage', 'Editing'), 'human', s('Monteur', 'Editor')],
-      ],
-    },
-  },
-  {
-    id: 'plume',
-    title: s('Le Voyage de Plume', 'Plume’s Journey'),
-    kind: 'film', year: 2026, length: '1 h 21', age: 'all',
-    categories: ['family', 'animation', 'adventure'],
-    scene: 'balloon', palette: ['#7fb7d9', '#f4e3c3', '#6f9a5b', '#e2574c', '#3e6b3a'],
-    synopsis: s(
-      'Une jeune aéronaute part retrouver son grand-père à bord d’une montgolfière rapiécée.',
-      'A young balloonist sets off to find her grandfather aboard a patched-up hot-air balloon.',
-    ),
-    studio: s('Les Films du Vent (fictif)', 'Les Films du Vent (fictional)'),
-    hc: {
-      level: 'minus', status: 'verified', date: '2026-01',
-      summary: s(
-        'Les images animées sont générées à partir des dessins et des indications de l’équipe. Le scénario, la musique et les voix sont humains.',
-        'The animated images are generated from the team’s drawings and directions. Script, music and voices are human.',
-      ),
-      stages: [
-        [s('Scénario', 'Script'), 'human', s('Écrit par la réalisatrice', 'Written by the director')],
-        [s('Recherche visuelle', 'Visual development'), 'shared', s('Croquis humains, variantes générées', 'Human sketches, generated variants')],
-        [s('Animation', 'Animation'), 'gen', s('Plans générés, sélectionnés et recadrés', 'Generated shots, selected and reframed')],
-        [s('Montage', 'Editing'), 'human', s('Monteuse', 'Editor')],
-        [s('Musique et voix', 'Music and voices'), 'human', s('Compositeur et comédiens', 'Composer and actors')],
-      ],
-    },
-  },
-  {
-    id: 'foret',
-    title: s('Forêt d’hiver', 'Winter Forest'),
-    kind: 'series', year: 2024, length: s('6 épisodes', '6 episodes'), age: 'all',
-    categories: ['documentary', 'family'],
-    scene: 'forest', palette: ['#1d3346', '#9fb9c6', '#2f5a4f', '#eef3f1', '#183a33'],
-    synopsis: s(
-      'Six mois dans une forêt du Nord, à suivre lynx, mésanges et cerfs pendant la saison froide.',
-      'Six months in a northern forest, following lynx, tits and deer through the cold season.',
-    ),
-    studio: s('Boréal Images (fictif)', 'Boréal Images (fictional)'),
-    hc: {
-      level: 'plus', status: 'verified', date: '2024-12',
-      summary: s(
-        'Tourné, écrit et monté par l’équipe. Seules quelques cartes animées utilisent l’IA générative.',
-        'Filmed, written and edited by the team. Only a few animated maps use generative AI.',
-      ),
-      stages: [
-        [s('Tournage', 'Filming'), 'human', s('Équipe de trois opérateurs', 'Three camera operators')],
-        [s('Commentaire', 'Narration'), 'human', s('Écrit et lu par une naturaliste', 'Written and read by a naturalist')],
-        [s('Cartes animées', 'Animated maps'), 'shared', s('Fonds générés, tracés à la main', 'Generated bases, hand-drawn routes')],
-        [s('Montage et son', 'Editing and sound'), 'human', s('Monteur et mixeur', 'Editor and mixer')],
-      ],
-    },
-  },
-  {
-    id: 'orion',
-    title: s('Station Orion', 'Orion Station'),
-    kind: 'film', year: 2026, length: '1 h 48', age: '10',
-    categories: ['scifi', 'adventure'],
-    scene: 'city', palette: ['#0c1a2b', '#2d5668', '#1b3447', '#9fe3e0', '#10222f'],
-    synopsis: s(
-      'Sur une station orbitale, une ingénieure découvre que les jardins hydroponiques fleurissent la nuit.',
-      'On an orbital station, an engineer discovers that the hydroponic gardens bloom at night.',
-    ),
-    studio: s('Hélice Pictures (fictif)', 'Hélice Pictures (fictional)'),
-    hc: {
-      level: 'base', status: 'declared', date: '2026-04',
-      summary: s(
-        'Comédiens, mise en scène et montage sont humains. Les décors numériques de la station sont en grande partie générés.',
-        'Actors, direction and editing are human. Most of the station’s digital sets are generated.',
-      ),
-      stages: [
-        [s('Scénario', 'Script'), 'shared', s('Structure humaine, scènes réécrites avec assistance générative', 'Human structure, scenes rewritten with generative assistance')],
-        [s('Décors', 'Sets'), 'gen', s('Environnements générés, intégrés par l’équipe effets', 'Generated environments, integrated by the VFX team')],
-        [s('Jeu', 'Performance'), 'human', s('Distribution de neuf comédiens', 'Cast of nine actors')],
-        [s('Effets visuels', 'Visual effects'), 'shared', s('Compositing humain, éléments générés', 'Human compositing, generated elements')],
-        [s('Montage', 'Editing'), 'human', s('Monteuse', 'Editor')],
-      ],
-    },
-  },
-  {
-    id: 'traversee',
-    title: s('La Grande Traversée', 'The Great Crossing'),
-    kind: 'film', year: 2025, length: '1 h 40', age: '6',
+    id: 'general',
+    title: s('Le Mécano de la General', 'The General'),
+    studio: 'Buster Keaton, United Artists',
+    year: 1926, kind: 'film',
     categories: ['adventure', 'family'],
-    scene: 'mountains', palette: ['#f0b47c', '#f7e1c4', '#8a6a8c', '#fff4dc', '#4d3a5c'],
+    poster: { src: 'posters/general.png', page: commons('The_General_(1926)_-_Movie_Poster.png') },
     synopsis: s(
-      'Deux frères et leur chienne traversent les montagnes pour rapporter un message au village voisin.',
-      'Two brothers and their dog cross the mountains to deliver a message to the next village.',
+      'Un mécanicien de locomotive part seul à la poursuite de son train, volé en pleine guerre de Sécession.',
+      'A train engineer sets off alone after his locomotive, stolen in the middle of the American Civil War.',
     ),
-    studio: s('Cime Films (fictif)', 'Cime Films (fictional)'),
-    hc: {
-      level: 'plus', status: 'declared', date: '2025-06',
-      summary: s(
-        'Film tourné en décors naturels. L’IA générative n’a servi qu’à créer deux plans de ciel dans une scène d’orage.',
-        'Shot on location. Generative AI was only used for two sky shots in a storm scene.',
-      ),
-      stages: [
-        [s('Scénario', 'Script'), 'human', s('Adapté d’un conte par le réalisateur', 'Adapted from a folk tale by the director')],
-        [s('Tournage', 'Filming'), 'human', s('En montagne, sur huit semaines', 'In the mountains, over eight weeks')],
-        [s('Effets visuels', 'Visual effects'), 'shared', s('Deux ciels d’orage générés', 'Two generated storm skies')],
-        [s('Montage et musique', 'Editing and music'), 'human', s('Monteur et compositrice', 'Editor and composer')],
-      ],
-    },
+    hc: classic(1926),
   },
   {
-    id: 'inventeurs',
-    title: s('Les Petits Inventeurs', 'Little Inventors'),
-    kind: 'series', year: 2026, length: s('1 saison', '1 season'), age: 'all',
-    categories: ['family', 'animation'],
-    scene: 'garden', palette: ['#9ad1c8', '#f6efd6', '#78b26a', '#ffcf5a', '#3f7d4a'],
+    id: 'voyage-lune',
+    title: s('Le Voyage dans la Lune', 'A Trip to the Moon'),
+    studio: 'Georges Méliès, Star Film',
+    year: 1902, kind: 'short',
+    categories: ['scifi', 'adventure'],
+    poster: { src: 'posters/voyage-lune.jpg', page: commons('Voyage_dans_la_Lune_affiche.jpg') },
     synopsis: s(
-      'Dans un jardin partagé, trois enfants fabriquent chaque semaine une machine pour résoudre un petit problème.',
-      'In a community garden, three children build a machine each week to solve a small problem.',
+      'Des savants partent pour la Lune dans un obus tiré par un canon géant.',
+      'A group of scientists travel to the Moon inside a shell fired from a giant cannon.',
     ),
-    studio: s('Petit Pois Studio (fictif)', 'Petit Pois Studio (fictional)'),
-    hc: {
-      level: 'minus', status: 'declared', date: '2026-02',
-      summary: s(
-        'Les scripts et les voix sont humains. L’animation et la musique sont générées, puis montées par une petite équipe.',
-        'Scripts and voices are human. Animation and music are generated, then edited by a small team.',
-      ),
-      stages: [
-        [s('Scripts', 'Scripts'), 'human', s('Une autrice et un conseiller scientifique', 'A writer and a science adviser')],
-        [s('Personnages', 'Characters'), 'shared', s('Dessinés à la main, déclinés par génération', 'Hand-drawn, expanded through generation')],
-        [s('Animation', 'Animation'), 'gen', s('Épisodes générés à partir des story-boards', 'Episodes generated from storyboards')],
-        [s('Voix', 'Voices'), 'human', s('Trois comédiens', 'Three actors')],
-        [s('Musique', 'Music'), 'gen', s('Génériques et ambiances générés', 'Generated theme and cues')],
-      ],
-    },
+    hc: classic(1902),
   },
   {
-    id: 'aurores',
-    title: s('Aurores', 'Northern Lights'),
-    kind: 'film', year: 2024, length: '52 min', age: 'all',
+    id: 'gertie',
+    title: s('Gertie le dinosaure', 'Gertie the Dinosaur'),
+    studio: 'Winsor McCay',
+    year: 1914, kind: 'short',
+    categories: ['animation', 'family'],
+    poster: { src: 'posters/gertie.jpg', page: commons('Gertie_the_Dinosaur_poster.jpg') },
+    synopsis: s(
+      'Winsor McCay présente une dinosaure dessinée à la main, qui obéit… presque toujours.',
+      'Winsor McCay introduces a hand-drawn dinosaur who does what she’s told… most of the time.',
+    ),
+    hc: classic(1914),
+  },
+  {
+    id: 'the-kid',
+    title: s('Le Kid', 'The Kid'),
+    studio: 'Charles Chaplin, First National',
+    year: 1921, kind: 'film',
+    categories: ['family'],
+    poster: { src: 'posters/the-kid.jpg', page: commons('The_Kid_(1921)_poster.jpg') },
+    synopsis: s(
+      'Un vagabond recueille un bébé abandonné et l’élève avec les moyens du bord.',
+      'A tramp takes in an abandoned baby and raises him as best he can.',
+    ),
+    hc: classic(1921),
+  },
+  {
+    id: 'nanook',
+    title: s('Nanouk l’Esquimau', 'Nanook of the North'),
+    studio: 'Robert J. Flaherty, Pathé',
+    year: 1922, kind: 'film',
     categories: ['documentary'],
-    scene: 'aurora', palette: ['#06121f', '#163a4a', '#3fd4a0', '#a6f0d0', '#0b1c26'],
+    poster: { src: 'posters/nanook.jpg', page: commons('Nanook_of_the_north.jpg') },
     synopsis: s(
-      'Comment le vent solaire allume-t-il le ciel polaire ? Des chercheurs nous emmènent en Laponie.',
-      'How does the solar wind light up the polar sky? Researchers take us to Lapland.',
+      'La vie d’une famille inuit dans le nord du Canada, entre chasse, pêche et construction d’un igloo.',
+      'The life of an Inuit family in northern Canada: hunting, fishing and building an igloo.',
     ),
-    studio: s('Polaris Docs (fictif)', 'Polaris Docs (fictional)'),
-    hc: {
-      level: 'base', status: 'declared', date: '2024-10',
-      summary: s(
-        'Les prises de vue et le commentaire sont humains. Les visualisations du vent solaire sont générées et occupent une grande partie du film.',
-        'Footage and narration are human. Visualisations of the solar wind are generated and fill much of the film.',
-      ),
-      stages: [
-        [s('Tournage', 'Filming'), 'human', s('Accélérés tournés sur place', 'Time-lapses shot on location')],
-        [s('Visualisations', 'Visualisations'), 'gen', s('Générées, validées par les chercheurs', 'Generated, checked by the researchers')],
-        [s('Commentaire', 'Narration'), 'human', s('Écrit par la réalisatrice', 'Written by the director')],
-        [s('Musique', 'Music'), 'shared', s('Composée, avec des nappes générées', 'Composed, with generated pads')],
-      ],
-    },
+    hc: classic(1922),
   },
   {
-    id: 'recif',
-    title: s('Les Gardiens du récif', 'Reef Keepers'),
-    kind: 'series', year: 2025, length: s('1 saison', '1 season'), age: '6',
-    categories: ['animation', 'adventure'],
-    scene: 'reef', palette: ['#0f4c6b', '#36a3a8', '#e07a5f', '#f9e6b0', '#0c3a4f'],
-    synopsis: s(
-      'Une tortue curieuse et un poisson-clown très prudent veillent sur leur récif.',
-      'A curious turtle and a very careful clownfish look after their reef.',
-    ),
-    studio: s('Lagon Animation (fictif)', 'Lagon Animation (fictional)'),
-    hc: {
-      level: 'base', status: 'unverified', date: '2025-08',
-      summary: s(
-        'Niveau déclaré par le distributeur. Le détail de plusieurs étapes n’a pas été fourni : la déclaration n’a pas pu être confirmée.',
-        'Level declared by the distributor. Several stages were not documented, so the declaration could not be confirmed.',
-      ),
-      stages: [
-        [s('Écriture', 'Writing'), 'human', s('Déclaré humain', 'Declared human')],
-        [s('Décors', 'Backgrounds'), 'gen', s('Déclarés générés', 'Declared generated')],
-        [s('Animation', 'Animation'), 'shared', s('Information incomplète', 'Incomplete information')],
-      ],
-    },
-  },
-  {
-    id: 'train',
-    title: s('Le Train des étoiles', 'The Star Train'),
-    kind: 'film', year: 2026, length: '1 h 26', age: 'all',
-    categories: ['scifi', 'family', 'animation'],
-    scene: 'space', palette: ['#141033', '#3b2a6b', '#d35d6e', '#ffe3a3', '#221a4a'],
-    synopsis: s(
-      'Un train de nuit quitte la gare et ne s’arrête plus sur Terre. Les passagers vont devoir s’entendre.',
-      'A night train leaves the station and never stops on Earth again. The passengers will have to get along.',
-    ),
-    studio: s('Wagon-Lune (fictif)', 'Wagon-Lune (fictional)'),
-    hc: {
-      level: 'plus', status: 'verified', date: '2026-05',
-      summary: s(
-        'Film entièrement conçu et animé par l’équipe. L’IA générative a aidé à produire des variantes de bruitages, triées par le monteur son.',
-        'Fully designed and animated by the team. Generative AI helped produce sound-effect variants, sorted by the sound editor.',
-      ),
-      stages: [
-        [s('Scénario', 'Script'), 'human', s('Écrit à quatre mains', 'Co-written by two writers')],
-        [s('Design', 'Design'), 'human', s('Personnages et décors dessinés', 'Drawn characters and sets')],
-        [s('Animation', 'Animation'), 'human', s('Animation 3D', '3D animation')],
-        [s('Bruitages', 'Sound effects'), 'shared', s('Variantes générées, sélection humaine', 'Generated variants, human selection')],
-        [s('Musique', 'Music'), 'human', s('Compositrice', 'Composer')],
-      ],
-    },
-  },
-  {
-    id: 'pingouin',
-    title: s('Opération Pingouin', 'Operation Penguin'),
-    kind: 'film', year: 2025, length: '1 h 18', age: 'all',
+    id: 'peter-pan',
+    title: s('Peter Pan', 'Peter Pan'),
+    studio: 'Herbert Brenon, Paramount',
+    year: 1924, kind: 'film',
     categories: ['family', 'adventure'],
-    scene: 'mountains', palette: ['#b9d7ea', '#eef6fb', '#7fa6c4', '#ffffff', '#3d6a8c'],
+    poster: { src: 'posters/peter-pan.jpg', page: commons('Peter_Pan_1924_poster.jpg') },
     synopsis: s(
-      'Un pingouin égaré dans un port du Nord compte sur une bande d’enfants pour rentrer chez lui.',
-      'A penguin lost in a northern harbour relies on a group of kids to get home.',
+      'Peter emmène Wendy et ses frères au Pays imaginaire, où les attend le capitaine Crochet.',
+      'Peter takes Wendy and her brothers to Neverland, where Captain Hook is waiting.',
     ),
-    studio: s('Banquise Prod (fictif)', 'Banquise Prod (fictional)'),
-    hc: {
-      level: 'minus', status: 'declared', date: '2025-12',
-      summary: s(
-        'Les enfants sont joués par des comédiens. Le pingouin, les décors et une partie des dialogues sont générés.',
-        'The children are played by actors. The penguin, the sets and part of the dialogue are generated.',
-      ),
-      stages: [
-        [s('Scénario', 'Script'), 'shared', s('Dialogues en partie générés, retenus par la réalisatrice', 'Dialogue partly generated, chosen by the director')],
-        [s('Personnage du pingouin', 'Penguin character'), 'gen', s('Généré et intégré plan par plan', 'Generated and composited shot by shot')],
-        [s('Décors', 'Sets'), 'gen', s('Port et banquise générés', 'Generated harbour and ice field')],
-        [s('Jeu', 'Performance'), 'human', s('Cinq jeunes comédiens', 'Five young actors')],
-        [s('Montage', 'Editing'), 'human', s('Monteur', 'Editor')],
-      ],
-    },
+    hc: classic(1924),
   },
   {
-    id: 'batisseurs',
-    title: s('Les Bâtisseurs', 'The Builders'),
-    kind: 'series', year: 2024, length: s('8 épisodes', '8 episodes'), age: 'all',
+    id: 'lost-world',
+    title: s('Le Monde perdu', 'The Lost World'),
+    studio: 'Harry O. Hoyt, First National',
+    year: 1925, kind: 'film',
+    categories: ['adventure', 'scifi'],
+    poster: { src: 'posters/lost-world.jpg', page: commons('The_Lost_World_(1925)_-_film_poster.jpg') },
+    synopsis: s(
+      'Une expédition découvre un plateau d’Amérique du Sud où vivent encore des dinosaures, animés image par image.',
+      'An expedition finds a South American plateau where dinosaurs still live, brought to life with stop-motion.',
+    ),
+    hc: classic(1925),
+  },
+  {
+    id: 'gold-rush',
+    title: s('La Ruée vers l’or', 'The Gold Rush'),
+    studio: 'Charles Chaplin, United Artists',
+    year: 1925, kind: 'film',
+    categories: ['family', 'adventure'],
+    poster: { src: 'posters/gold-rush.jpg', page: commons('Gold_rush_poster.jpg') },
+    synopsis: s(
+      'Un vagabond tente sa chance dans le Grand Nord, en pleine ruée vers l’or du Klondike.',
+      'A tramp tries his luck in the far north during the Klondike gold rush.',
+    ),
+    hc: classic(1925),
+  },
+  {
+    id: 'grass',
+    title: s('Grass', 'Grass'),
+    studio: 'Merian C. Cooper, Ernest B. Schoedsack, Marguerite Harrison, Paramount',
+    year: 1925, kind: 'film',
     categories: ['documentary'],
-    scene: 'city', palette: ['#2a1e3b', '#e48a6a', '#5b3f62', '#ffd27a', '#2f2340'],
+    poster: { src: 'posters/grass.jpg', page: commons('Grass_(1925_film_poster).jpg') },
     synopsis: s(
-      'Comment construit-on un pont, une gare ou une tour ? Chaque épisode suit un chantier du début à la fin.',
-      'How do you build a bridge, a station or a tower? Each episode follows one site from start to finish.',
+      'Le peuple bakhtiari traverse rivières et montagnes de Perse pour mener ses troupeaux vers les pâturages.',
+      'The Bakhtiari people cross the rivers and mountains of Persia to lead their herds to pasture.',
     ),
-    studio: s('Chantier Docs (fictif)', 'Chantier Docs (fictional)'),
-    hc: {
-      level: 'base', status: 'declared', date: '2024-09',
-      summary: s(
-        'Tournage et entretiens sont humains. Les reconstitutions 3D des ouvrages finis sont générées, puis corrigées avec les architectes.',
-        'Filming and interviews are human. 3D reconstructions of the finished buildings are generated, then corrected with the architects.',
-      ),
-      stages: [
-        [s('Tournage', 'Filming'), 'human', s('Sur chantier, sur deux ans', 'On site, over two years')],
-        [s('Reconstitutions', 'Reconstructions'), 'gen', s('Générées, corrigées avec les architectes', 'Generated, corrected with the architects')],
-        [s('Commentaire', 'Narration'), 'human', s('Journaliste', 'Journalist')],
-        [s('Montage', 'Editing'), 'human', s('Deux monteurs', 'Two editors')],
-      ],
-    },
+    hc: classic(1925),
   },
   {
-    id: 'bibliotheque',
-    title: s('La Bibliothèque flottante', 'The Floating Library'),
-    kind: 'series', year: 2026, length: s('1 saison', '1 season'), age: '6',
+    id: 'steamboat-bill',
+    title: s('Cadet d’eau douce', 'Steamboat Bill, Jr.'),
+    studio: 'Charles Reisner, Buster Keaton, United Artists',
+    year: 1928, kind: 'film',
+    categories: ['family'],
+    poster: { src: 'posters/steamboat-bill.jpg', page: commons('Steamboat_bill_poster.jpg') },
+    synopsis: s(
+      'Le fils d’un capitaine de bateau à vapeur doit faire ses preuves, jusqu’à une tempête restée célèbre.',
+      'A steamboat captain’s son has to prove himself, all the way to a famous storm sequence.',
+    ),
+    hc: classic(1928),
+  },
+  {
+    id: 'spiderverse',
+    title: s('Spider-Man : New Generation', 'Spider-Man: Into the Spider-Verse'),
+    studio: 'Sony Pictures Animation',
+    year: 2018, kind: 'film',
     categories: ['animation', 'adventure'],
-    scene: 'ocean', palette: ['#3a2b55', '#c46f8c', '#4a3a6e', '#ffe0b8', '#2a2042'],
+    link: { url: 'https://www.sonypictures.com/movies/spidermanintothespiderverse', label: s('Site officiel (Sony Pictures)', 'Official site (Sony Pictures)') },
     synopsis: s(
-      'Une bibliothèque installée sur une péniche descend le fleuve et prête ses livres de ville en ville.',
-      'A library on a barge travels downriver, lending its books from town to town.',
+      'Miles Morales, adolescent de Brooklyn, découvre qu’il n’est pas le seul Spider-Man.',
+      'Brooklyn teenager Miles Morales finds out he is not the only Spider-Man.',
     ),
-    studio: s('Encre & Eau (fictif)', 'Encre & Eau (fictional)'),
     hc: {
-      level: 'plus', status: 'declared', date: '2026-06',
+      level: 'plus',
       summary: s(
-        'Série dessinée et animée par l’équipe. Aucun usage génératif déclaré dans les éléments finaux.',
-        'Drawn and animated by the team. No generative use declared in the final elements.',
+        'Un outil d’apprentissage automatique, entraîné sur les dessins des artistes, a aidé à placer certains traits d’encrage. Le reste est conçu et fabriqué par l’équipe.',
+        'A machine-learning tool trained on the artists’ drawings helped place some ink lines. Everything else was designed and made by the team.',
       ),
-      stages: [
-        [s('Écriture', 'Writing'), 'human', s('Trois scénaristes', 'Three writers')],
-        [s('Dessin', 'Drawing'), 'human', s('Décors peints à la main', 'Hand-painted backgrounds')],
-        [s('Animation', 'Animation'), 'human', s('Animation 2D', '2D animation')],
-        [s('Musique', 'Music'), 'human', s('Quatuor à cordes', 'String quartet')],
-      ],
+      limits: s('Cas limite entre assistance et génération.', 'An edge case between assistance and generation.'),
+      sources: ['spiderverseFx', 'spiderverseBa'],
     },
   },
   {
-    id: 'signal',
-    title: s('Signal', 'Signal'),
-    kind: 'series', year: 2026, length: s('1 saison', '1 season'), age: '10',
-    categories: ['scifi'],
-    scene: 'desert', palette: ['#0e1430', '#3c3f7a', '#262a5a', '#c7d3ff', '#161a3d'],
+    id: 'steven-parker',
+    title: s('StEvEn & Parker', 'StEvEn & Parker'),
+    studio: 'Toonstar, Parker James',
+    year: 2023, kind: 'series',
+    categories: ['animation', 'family'],
+    link: { url: 'https://ca.news.yahoo.com/interactive-animation-house-toonstar-launches-150000368.html', label: s('Article de Deadline sur la série', 'Deadline article on the series') },
     synopsis: s(
-      'Un radiotélescope capte un message répétitif. Une équipe d’étudiants tente de le comprendre avant tout le monde.',
-      'A radio telescope picks up a repeating message. A team of students tries to understand it first.',
+      'Série animée humoristique diffusée en ligne, construite autour du créateur Parker James.',
+      'A comedy animated series released online, built around creator Parker James.',
     ),
-    studio: s('Écho Séries (fictif)', 'Écho Séries (fictional)'),
     hc: {
-      level: 'minus', status: 'unverified', date: '2026-07',
+      level: 'base',
+      range: 'minus',
       summary: s(
-        'Le producteur déclare une série générée à partir de scripts écrits par l’équipe. Les justificatifs n’ont pas été transmis.',
-        'The producer declares a series generated from scripts written by the team. Supporting records were not provided.',
+        'Parker James enregistre les épisodes, et des membres de sa famille prêtent leur voix aux personnages. Toonstar les anime avec un moteur de production assisté par IA, et les versions étrangères sont doublées par IA.',
+        'Parker James records the episodes, with family members voicing the characters. Toonstar animates them with an AI-assisted production engine, and foreign versions are dubbed with AI.',
       ),
-      stages: [
-        [s('Scripts', 'Scripts'), 'human', s('Déclaré humain', 'Declared human')],
-        [s('Images', 'Images'), 'gen', s('Déclarées générées', 'Declared generated')],
-        [s('Voix', 'Voices'), 'gen', s('Déclarées générées', 'Declared generated')],
-      ],
+      limits: s(
+        'La part exacte de l’animation générée n’est pas publique, d’où l’hésitation avec HC−.',
+        'The exact share of generated animation is not public, hence the hesitation with HC−.',
+      ),
+      sources: ['toonstarDeadline', 'toonstarEngadget'],
+    },
+  },
+  {
+    id: 'robots',
+    title: s('Where the Robots Grow', 'Where the Robots Grow'),
+    studio: 'AiMation Studios',
+    year: 2024, kind: 'film',
+    categories: ['animation', 'scifi', 'family'],
+    link: { url: 'https://www.imdb.com/title/tt33098130/', label: s('Fiche IMDb', 'IMDb page') },
+    synopsis: s(
+      'Sur une planète lointaine, un robot fermier découvre un bébé humain et doit veiller sur lui.',
+      'On a distant planet, a farming robot finds a human baby and has to look after it.',
+    ),
+    hc: {
+      level: 'minus',
+      summary: s(
+        'Présenté comme un long métrage animé presque entièrement par IA, réalisé en environ 90 jours par une équipe de neuf personnes.',
+        'Presented as a feature film animated almost entirely with AI, made in about 90 days by a team of nine.',
+      ),
+      limits: s(
+        'Les chiffres viennent du studio et d’un fournisseur d’outils, pas d’une source indépendante.',
+        'The figures come from the studio and a tool vendor, not from an independent source.',
+      ),
+      sources: ['robotsElevenLabs', 'robotsReview'],
+    },
+  },
+  {
+    id: 'frost',
+    title: s('The Frost', 'The Frost'),
+    studio: s('Waymark, réalisé par Josh Rubin', 'Waymark, directed by Josh Rubin'),
+    year: 2023, kind: 'short',
+    categories: ['scifi'],
+    link: { url: 'https://www.technologyreview.com/2023/06/01/1073858/surreal-ai-generative-video-changing-film/', label: s('Présentation par MIT Technology Review', 'MIT Technology Review feature') },
+    synopsis: s(
+      'Court métrage de douze minutes : une équipe affronte une montagne glacée qui semble la poursuivre.',
+      'A twelve-minute short: a team faces an icy mountain that seems to be hunting them.',
+    ),
+    hc: {
+      level: 'minus',
+      summary: s(
+        'Le scénario est écrit par le réalisateur. Chaque plan a été généré avec DALL-E 2, puis animé avec un autre outil d’IA.',
+        'The director wrote the script. Every shot was generated with DALL-E 2, then animated with another AI tool.',
+      ),
+      limits: s('Le montage et le son ne sont pas détaillés dans les sources.', 'Editing and sound are not detailed in the sources.'),
+      sources: ['frostMit'],
     },
   },
 ]
-
-export const AGE = {
-  all: s('Tous publics', 'All ages'),
-  '6': s('6 ans et +', 'Ages 6+'),
-  '10': s('10 ans et +', 'Ages 10+'),
-}
-
-export const STAGE_STATE = {
-  human: s('Humain', 'Human'),
-  shared: s('Partagé', 'Shared'),
-  gen: s('IA générative', 'Generative AI'),
-}

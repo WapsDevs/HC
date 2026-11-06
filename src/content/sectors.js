@@ -161,14 +161,14 @@ export const SECTORS = [
         ['Conception', 'Parti architectural, volumes, matières', 'Esquisses et images d’ambiance générées'],
         ['Coordination et conception technique', 'Structure, réseaux, détails', 'Variantes générées sous contraintes'],
         ['Construction', 'Suivi de chantier, arbitrages', 'Peu d’usage génératif direct'],
-        ['Livraison et usage', 'Ajustements, retour d’expérience', '—'],
+        ['Livraison et usage', 'Ajustements, retour d’expérience', 'Peu d’usage génératif'],
       ],
       en: [
         ['Definition and brief', 'Needs, budget, constraints', 'Document summaries'],
         ['Concept design', 'Architectural idea, massing, materials', 'Generated sketches and mood images'],
         ['Coordination and technical design', 'Structure, services, details', 'Variants generated under constraints'],
         ['Construction', 'Site follow-up, trade-offs', 'Little direct generative use'],
-        ['Handover and use', 'Adjustments, feedback', '—'],
+        ['Handover and use', 'Adjustments, feedback', 'Little generative use'],
       ],
     },
     note: {
@@ -176,35 +176,6 @@ export const SECTORS = [
       en: 'Hypothesis: HC would mainly apply to competition images and concept design, which the public sees most.',
     },
     sources: ['riba'],
-  },
-  {
-    id: 'music',
-    name: { fr: 'Musique et audiovisuel', en: 'Music and audio-visual' },
-    intro: {
-      fr: 'Un morceau passe par l’écriture, l’arrangement, l’enregistrement, le mixage puis le mastering. Les outils de studio y sont omniprésents.',
-      en: 'A track goes through songwriting, arrangement, recording, mixing and mastering. Studio software is everywhere.',
-    },
-    stages: {
-      fr: [
-        ['Composition et paroles', 'Mélodie, harmonie, texte', 'Mélodies ou paroles générées'],
-        ['Arrangement', 'Instruments, structure, groove', 'Parties instrumentales générées'],
-        ['Enregistrement', 'Interprétation, prises', 'Voix ou instruments de synthèse générative'],
-        ['Mixage', 'Équilibre, espace, effets', 'Séparation de pistes (assistance)'],
-        ['Mastering', 'Rendu final, formats', 'Mastering automatique (assistance)'],
-      ],
-      en: [
-        ['Composition and lyrics', 'Melody, harmony, words', 'Generated melodies or lyrics'],
-        ['Arrangement', 'Instruments, structure, groove', 'Generated instrumental parts'],
-        ['Recording', 'Performance, takes', 'Generative synthetic voices or instruments'],
-        ['Mixing', 'Balance, space, effects', 'Stem separation (assistance)'],
-        ['Mastering', 'Final sound, formats', 'Automatic mastering (assistance)'],
-      ],
-    },
-    note: {
-      fr: 'Isoler une voix d’un vieil enregistrement n’est pas créer une voix. La différence compte beaucoup ici.',
-      en: 'Isolating a voice from an old recording is not creating a voice. The difference matters a lot here.',
-    },
-    sources: ['abbeyRoad'],
   },
   {
     id: 'education',

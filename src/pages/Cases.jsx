@@ -9,7 +9,7 @@ const T = {
   fr: {
     colon: ' :',
     eyebrow: 'Études de cas',
-    title: 'Sept œuvres réelles, lues avec HC',
+    title: 'Six œuvres réelles, lues avec HC',
     lead: 'Ces exemples testent la grille sur des usages de l’IA documentés publiquement. Les niveaux indiqués sont des hypothèses.',
     warningTitle: 'À lire avant',
     warning: [
@@ -24,12 +24,12 @@ const T = {
     reasoning: 'Raisonnement',
     limits: 'Limites',
     pick: 'Choix des cas',
-    pickText: 'Les cas couvrent six secteurs et les trois niveaux. Ils montrent des situations difficiles : outil entraîné sur le travail de l’équipe, élément isolé dans une série, séparation audio, version de jeu qui change.',
+    pickText: 'Les cas couvrent quatre secteurs et les trois niveaux. Ils montrent des situations délicates : un outil entraîné sur le travail de l’équipe, un élément isolé dans une série, un jeu qui change après sa sortie.',
   },
   en: {
     colon: ':',
     eyebrow: 'Case studies',
-    title: 'Seven real works, read through HC',
+    title: 'Six real works, read through HC',
     lead: 'These examples test the grid against publicly documented uses of AI. The levels shown are hypotheses.',
     warningTitle: 'Before you read',
     warning: [
@@ -44,7 +44,7 @@ const T = {
     reasoning: 'Reasoning',
     limits: 'Limits',
     pick: 'Why these cases',
-    pickText: 'The cases cover six fields and all three levels. They show difficult situations: a tool trained on the team’s own work, a single element within a series, audio separation, a game version that changes.',
+    pickText: 'The cases cover four fields and all three levels. They show tricky situations: a tool trained on the team’s own work, a single element within a series, a game that changes after release.',
   },
 }
 
@@ -78,7 +78,7 @@ export default function Cases() {
                 <span className="text-muted">{t.hypothesis}{t.colon}</span>
                 <Badge level={c.level} lang={lang} size="md" />
                 {c.range && <><span className="text-muted">{t.or}</span><Badge level={c.range} lang={lang} size="md" /></>}
-                <span className="text-muted">— {LEVELS[c.level].label[lang].toLowerCase()}</span>
+                <span className="text-muted">{LEVELS[c.level].label[lang]}</span>
               </div>
               {c.part && (
                 <p className="mt-2 text-sm flex items-center gap-2">

@@ -5,12 +5,12 @@ export const SOURCES = {
   // Cadres existants
   aiAct50: {
     title: 'Article 50: Transparency obligations for providers and deployers of certain AI systems',
-    publisher: 'Commission européenne, AI Act Service Desk',
+    publisher: { fr: 'Commission européenne, AI Act Service Desk', en: 'European Commission, AI Act Service Desk' },
     url: 'https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-50',
   },
   aiActGuidelines: {
     title: 'Guidelines on transparency obligations for providers and deployers of AI systems',
-    publisher: 'Commission européenne',
+    publisher: { fr: 'Commission européenne', en: 'European Commission' },
     url: 'https://digital-strategy.ec.europa.eu/en/library/guidelines-transparency-obligations-providers-and-deployers-ai-systems',
     date: '2026',
   },
@@ -51,13 +51,16 @@ export const SOURCES = {
     url: 'https://learn.toonboom.com/modules/the-animation-pipeline/topic/the-storyboard-pipeline',
   },
   ubisoft: {
-    title: 'Processus créatif',
+    title: { fr: 'Processus créatif', en: 'Creative process' },
     publisher: 'Ubisoft',
-    url: 'https://www.ubisoft.com/fr-fr/company/how-we-make-games/creative-process',
+    url: {
+      fr: 'https://www.ubisoft.com/fr-fr/company/how-we-make-games/creative-process',
+      en: 'https://www.ubisoft.com/en-us/company/how-we-make-games/creative-process',
+    },
   },
   webJapan: {
     title: 'The Creation of Manga',
-    publisher: 'Web Japan (ministère japonais des Affaires étrangères)',
+    publisher: { fr: 'Web Japan, ministère japonais des Affaires étrangères', en: 'Web Japan, Ministry of Foreign Affairs of Japan' },
     url: 'https://web-japan.org/trends/09_culture/pop110210.html',
   },
   enago: {
@@ -66,8 +69,8 @@ export const SOURCES = {
     url: 'https://www.enago.com/author-hub/the-stages-of-the-publishing-process/',
   },
   adProduction: {
-    title: 'BSBADV603 — Manage advertising production',
-    publisher: 'Training.gov.au (référentiel australien de compétences)',
+    title: 'BSBADV603: Manage advertising production',
+    publisher: { fr: 'Training.gov.au, référentiel australien de compétences', en: 'Training.gov.au, Australian training standards' },
     url: 'https://training.gov.au/TrainingComponentFiles/BSB/BSBADV603_R1.pdf',
   },
   riba: {
@@ -75,15 +78,42 @@ export const SOURCES = {
     publisher: 'Royal Institute of British Architects',
     url: 'https://riba.org/work/insights-and-resources/riba-plan-of-work',
   },
-  abbeyRoad: {
-    title: 'How To Make A Record: Your Step by Step Guide',
-    publisher: 'Abbey Road Institute',
-    url: 'https://abbeyroadinstitute.co.uk/blog/the-music-making-process-a-step-by-step-guide/',
-  },
   addie: {
     title: 'ADDIE model',
     publisher: 'EBSCO Research Starters',
     url: 'https://ebsco.com/research-starters/education/addie-model',
+  },
+
+  // Démo streaming : œuvres récentes (affiches non réutilisables, liens seulement)
+  robotsElevenLabs: {
+    title: 'AiMation Studios uses ElevenLabs to bring characters to life',
+    publisher: 'ElevenLabs',
+    url: 'https://elevenlabs.io/blog/aimation-studios',
+    note: { fr: 'Article promotionnel d’un fournisseur d’outils du film.', en: 'Promotional article by one of the film’s tool vendors.' },
+  },
+  robotsReview: {
+    title: '“Where the Robots Grow” Says Its the First Full-Length A.I. Film',
+    publisher: 'SciFi.radio',
+    url: 'https://scifi.radio/2024/10/22/where-the-robots-grow/',
+    date: '2024',
+  },
+  frostMit: {
+    title: 'Welcome to the new surreal: How AI-generated video is changing film',
+    publisher: 'MIT Technology Review',
+    url: 'https://www.technologyreview.com/2023/06/01/1073858/surreal-ai-generative-video-changing-film/',
+    date: '2023',
+  },
+  toonstarDeadline: {
+    title: 'Interactive Animation House Toonstar Launches AI Creators Studio On Back Of Parker James Series',
+    publisher: 'Deadline (via Yahoo News)',
+    url: 'https://ca.news.yahoo.com/interactive-animation-house-toonstar-launches-150000368.html',
+    date: '2024',
+  },
+  toonstarEngadget: {
+    title: 'AI animation studio Toonstar will turn books into digital shows for HarperCollins',
+    publisher: 'Engadget',
+    url: 'https://engadget.com/ai/ai-animation-studio-toonstar-will-turn-books-into-digital-shows-for-harpercollins-211419155.html',
+    date: '2026',
   },
 
   // Études de cas
@@ -140,18 +170,6 @@ export const SOURCES = {
     publisher: 'The Decoder',
     url: 'https://the-decoder.com/ai-generated-holidays-are-coming-coca-cola-ad-looks-festive-but-feels-artificial-critics-say/',
     date: '2024',
-  },
-  nowThenMusicRadar: {
-    title: 'How AI helped us hear the “final” Beatles song: “It’s the closest we’ll ever come to having John back in the room”',
-    publisher: 'MusicRadar',
-    url: 'https://www.musicradar.com/news/ai-stem-separation-now-and-then-the-beatles',
-    date: '2023',
-  },
-  nowThenSmithsonian: {
-    title: 'The Beatles Release Their Last Song, “Now and Then,” Featuring A.I.-Extracted Vocals From John Lennon',
-    publisher: 'Smithsonian Magazine',
-    url: 'https://www.smithsonianmag.com/smart-news/the-beatles-release-their-last-song-now-and-then-ai-john-lennon-180983188/',
-    date: '2023',
   },
   arcRaidersPcg: {
     title: 'Arc Raiders’ use of AI highlights the tension and confusion over where machine learning ends and generative AI begins',

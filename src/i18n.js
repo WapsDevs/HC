@@ -49,17 +49,33 @@ export const STATUSES = {
   declared: { fr: 'Déclaré', en: 'Declared' },
   verified: { fr: 'Vérifié', en: 'Verified' },
   unverified: { fr: 'Non vérifié', en: 'Not verified' },
+  hypothetical: { fr: 'Hypothèse', en: 'Hypothesis' },
 }
 
+const page = (path, fr, en) => ({ path, label: { fr, en } })
+
+// Navigation : deux menus courts, puis « À propos ». La démo a son propre lien.
 export const NAV = [
-  { path: '', label: { fr: 'Accueil', en: 'Home' } },
-  { path: 'levels', label: { fr: 'Les niveaux', en: 'Levels' } },
-  { path: 'method', label: { fr: 'Méthode', en: 'Method' } },
-  { path: 'sectors', label: { fr: 'Secteurs', en: 'Sectors' } },
-  { path: 'cases', label: { fr: 'Études de cas', en: 'Case studies' } },
-  { path: 'verification', label: { fr: 'Vérification', en: 'Verification' } },
-  { path: 'about', label: { fr: 'À propos', en: 'About' } },
+  {
+    label: { fr: 'Le référentiel', en: 'The framework' },
+    items: [
+      page('levels', 'Les niveaux', 'Levels'),
+      page('method', 'Méthode', 'Method'),
+      page('verification', 'Vérification', 'Verification'),
+    ],
+  },
+  {
+    label: { fr: 'Exemples', en: 'Examples' },
+    items: [
+      page('sectors', 'Secteurs', 'Sectors'),
+      page('cases', 'Études de cas', 'Case studies'),
+    ],
+  },
+  page('about', 'À propos', 'About'),
 ]
+
+// Toutes les pages, à plat (pied de page, menu mobile).
+export const PAGES = NAV.flatMap((n) => n.items ?? [n])
 
 export const REPO_URL = 'https://github.com/WapsDevs/HC'
 export const PDF_URL = `${import.meta.env.BASE_URL}docs/HC_document_de_travail_v0_1.pdf`

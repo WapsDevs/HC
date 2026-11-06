@@ -109,7 +109,7 @@ export const CASES = [
   },
   {
     id: 'holidays',
-    title: 'Coca-Cola — Holidays Are Coming',
+    title: 'Holidays Are Coming (Coca-Cola)',
     meta: { fr: 'Publicité · 2024 · Secret Level, Silverside AI, Wild Card', en: 'Commercial · 2024 · Secret Level, Silverside AI, Wild Card' },
     level: 'minus',
     facts: {
@@ -133,33 +133,6 @@ export const CASES = [
       en: 'Each version was made by a different studio and would deserve its own sheet. Details come from press reports.',
     },
     sources: ['cocaColaTi', 'cocaColaDecoder'],
-  },
-  {
-    id: 'now-and-then',
-    title: 'The Beatles — Now and Then',
-    meta: { fr: 'Chanson · 2023', en: 'Song · 2023' },
-    level: 'plus',
-    facts: {
-      fr: [
-        'La voix de John Lennon provient d’une maquette enregistrée dans les années 1970.',
-        'Un outil d’apprentissage automatique, développé par l’équipe de Peter Jackson, a séparé la voix du piano.',
-        'Paul McCartney a déclaré qu’aucune voix n’avait été recréée artificiellement.',
-      ],
-      en: [
-        'John Lennon’s vocal comes from a demo recorded in the 1970s.',
-        'A machine-learning tool developed by Peter Jackson’s team separated the voice from the piano.',
-        'Paul McCartney said no voice was artificially recreated.',
-      ],
-    },
-    reasoning: {
-      fr: 'Séparer des pistes existantes est une assistance : aucun contenu créatif nouveau n’est généré.',
-      en: 'Separating existing tracks is assistance: no new creative content is generated.',
-    },
-    limits: {
-      fr: 'Utile pour montrer la frontière entre outil et génération. Le grand public a souvent entendu « chanson faite par IA ».',
-      en: 'Useful to show the line between tool and generation. Many people heard it described as “an AI song”.',
-    },
-    sources: ['nowThenMusicRadar', 'nowThenSmithsonian'],
   },
   {
     id: 'arc-raiders',

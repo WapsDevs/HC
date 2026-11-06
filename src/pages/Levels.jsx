@@ -29,7 +29,7 @@ const T = {
     levels: {
       minus: {
         observed: 'Une grande partie des images, textes, sons ou plans finaux sort d’un système génératif. Le travail humain porte surtout sur l’intention, le tri, l’assemblage et la validation.',
-        example: 'Un clip dont les plans sont générés à partir d’instructions. La réalisatrice choisit les plans, les monte et cale la musique.',
+        example: 'Un court métrage d’animation dont les plans sont générés à partir d’instructions. La réalisatrice choisit les plans, les monte et dirige les voix.',
         notMean: 'Que l’œuvre est moins soignée, moins personnelle ou faite sans effort.',
       },
       base: {
@@ -87,7 +87,7 @@ const T = {
     levels: {
       minus: {
         observed: 'Much of the final imagery, text, sound or footage comes from a generative system. Human work focuses on intent, sorting, assembling and approval.',
-        example: 'A music video whose shots are generated from prompts. The director picks the shots, edits them and syncs the music.',
+        example: 'An animated short whose shots are generated from prompts. The director picks the shots, edits them and directs the voice actors.',
         notMean: 'That the work is less careful, less personal or made without effort.',
       },
       base: {
