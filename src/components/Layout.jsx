@@ -11,7 +11,7 @@ const UI = {
     nav: 'Navigation principale',
     home: 'Accueil',
     demo: 'Démo streaming',
-    status: 'Proposition exploratoire. HC n’est ni une norme officielle ni une certification.',
+    status: 'Proposition exploratoire et indépendante, libre d’être discutée et reprise. HC n’est ni une norme officielle ni une certification.',
   },
   en: {
     skip: 'Skip to content',
@@ -20,7 +20,7 @@ const UI = {
     nav: 'Main navigation',
     home: 'Home',
     demo: 'Streaming demo',
-    status: 'Exploratory proposal. HC is not an official standard or a certification.',
+    status: 'An independent, exploratory proposal, free to be discussed and reused. HC is not an official standard or a certification.',
   },
 }
 

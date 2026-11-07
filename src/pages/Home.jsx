@@ -43,7 +43,8 @@ const T = {
     ],
     statusTitle: 'Où en est le projet',
     status: [
-      'HC est une piste de travail, publiée pour être discutée. Ce n’est ni une norme, ni un label officiel, ni une certification.',
+      'HC est une proposition exploratoire. Les acteurs du secteur sont libres de la discuter, de la critiquer, de la reprendre ou de s’en servir comme point de départ pour d’autres initiatives.',
+      'Ce n’est ni une norme, ni un label officiel, ni une certification.',
       'Les définitions doivent encore être testées sur des œuvres réelles, avec des professionnels de plusieurs métiers.',
     ],
     pdf: 'Lire la présentation de HC (PDF)',
@@ -88,7 +89,8 @@ const T = {
     ],
     statusTitle: 'Where the project stands',
     status: [
-      'HC is a working idea, published to be discussed. It is not a standard, an official label or a certification.',
+      'HC is an exploratory proposal. People in the creative industries are free to discuss it, criticise it, reuse it or use it as a starting point for other initiatives.',
+      'It is not a standard, an official label or a certification.',
       'The definitions still need to be tested on real works, with professionals from several fields.',
     ],
     pdf: 'Read the HC presentation (PDF, in French)',

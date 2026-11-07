@@ -4,12 +4,12 @@ import { PDF_URL, REPO_URL, useLang } from '../i18n.js'
 const T = {
   fr: {
     eyebrow: 'À propos',
-    title: 'Un projet ouvert, à construire ensemble',
+    title: 'Une proposition ouverte, libre d’être reprise',
     lead: 'HC est né d’une question simple : comment savoir ce qui a été fait par des personnes dans une œuvre, sans opposer l’humain et la technologie ?',
     originTitle: 'D’où vient le projet',
     origin: [
       'HC a été lancé par une personne passionnée d’histoire, de récits, de sciences et de technologie. Elle n’a pas d’expérience professionnelle dans les industries créatives et ne prétend pas avoir la légitimité de définir seule un tel cadre.',
-      'Cette proposition est publiée comme une bouteille à la mer. Elle pourra être critiquée, reprise, transformée, ou remplacée par une meilleure idée.',
+      'HC est une initiative indépendante. Son but est de lancer une réflexion et de mettre une proposition à disposition des acteurs du secteur, pas de créer ou d’imposer un nouveau standard. Elle est publiée comme une bouteille à la mer : chacun peut la critiquer, la reprendre, la transformer ou lui préférer une meilleure idée.',
     ],
     notTitle: 'Ce que HC n’est pas',
     not: [
@@ -18,7 +18,7 @@ const T = {
       'Un classement de la qualité des œuvres.',
       'Une obligation pour qui que ce soit.',
     ],
-    testTitle: 'Prochaine étape : tester',
+    testTitle: 'Une façon de la tester',
     test: [
       'Réunir 8 à 15 personnes de profils variés : animation, jeu vidéo, bande dessinée, indépendants, production, recherche, droit, public.',
       'Appliquer la grille à 10 à 20 œuvres aux méthodes différentes.',
@@ -32,7 +32,7 @@ const T = {
       ['Signaler', 'une source erronée, un lien cassé ou une traduction maladroite.'],
       ['Proposer', 'une autre approche, même très différente.'],
     ],
-    howTo: 'Les échanges se font sur GitHub : ouvrez une Issue pour discuter, ou une Pull Request pour proposer une modification.',
+    howTo: 'Le dépôt GitHub reste ouvert aux propositions : une Issue pour discuter, une Pull Request pour suggérer une modification. Leur intégration reste à la discrétion de l’auteur du projet.',
     issues: 'Ouvrir une discussion (Issue)',
     repo: 'Voir le dépôt',
     pdf: 'Présentation de HC (PDF)',
@@ -41,12 +41,12 @@ const T = {
   },
   en: {
     eyebrow: 'About',
-    title: 'An open project, to be built together',
+    title: 'An open proposal, free to be reused',
     lead: 'HC started with a simple question: how can we know what people made in a work, without setting humans against technology?',
     originTitle: 'Where the project comes from',
     origin: [
       'HC was started by someone with a passion for history, storytelling, science and technology. They have no professional background in the creative industries and do not claim the standing to define such a framework alone.',
-      'This proposal is published as a message in a bottle. It can be criticised, reused, reshaped, or replaced by a better idea.',
+      'HC is an independent initiative. Its aim is to start a conversation and offer a proposal to people in the creative industries, not to create or impose a new standard. It is published as a message in a bottle: anyone can criticise it, reuse it, reshape it or prefer a better idea.',
     ],
     notTitle: 'What HC is not',
     not: [
@@ -55,7 +55,7 @@ const T = {
       'A ranking of how good works are.',
       'An obligation for anyone.',
     ],
-    testTitle: 'Next step: testing',
+    testTitle: 'One way to test it',
     test: [
       'Bring together 8 to 15 people with varied backgrounds: animation, games, comics, independents, production, research, law, audiences.',
       'Apply the grid to 10 to 20 works made in different ways.',
@@ -69,7 +69,7 @@ const T = {
       ['Report', 'a wrong source, a broken link or a clumsy translation.'],
       ['Suggest', 'another approach, even a very different one.'],
     ],
-    howTo: 'Discussion happens on GitHub: open an Issue to discuss, or a Pull Request to suggest a change.',
+    howTo: 'The GitHub repository remains open to proposals: an Issue to discuss, a Pull Request to suggest a change. Whether they are included is up to the project’s author.',
     issues: 'Start a discussion (Issue)',
     repo: 'View the repository',
     pdf: 'HC presentation (PDF, in French)',

@@ -6,16 +6,17 @@ HC est une proposition ouverte pour indiquer la place de l'humain dans la créat
 
 HC is an open proposal to show how much of a creative work was made by people. Three levels, HC−, HC and HC+, describe human contribution, never the quality of the work.
 
-> Proposition exploratoire. HC n'est ni une norme officielle ni une certification.
-> Exploratory proposal. HC is not an official standard or a certification.
+> HC est une proposition exploratoire et indépendante. Elle est libre d'être discutée, critiquée, reprise ou utilisée comme point de départ pour d'autres initiatives par les acteurs du secteur. Ce n'est ni une norme officielle ni une certification.
+>
+> HC is an independent, exploratory proposal. People in the creative industries are free to discuss it, criticise it, reuse it or use it as a starting point for other initiatives. It is not an official standard or a certification.
 
 **Accès rapide / Quick links :** [Les niveaux / Levels](https://wapsdevs.github.io/HC/#/fr/levels) · [Méthode / Method](https://wapsdevs.github.io/HC/#/fr/method) · [Démo streaming / Streaming demo](https://wapsdevs.github.io/HC/#/fr/demo) · [Présentation (PDF)](https://wapsdevs.github.io/HC/docs/HC_presentation.pdf)
 
 ## Participer / Contributing
 
-Critiques, cas réels et propositions sont les bienvenus : ouvrez une [Issue](https://github.com/WapsDevs/HC/issues) ou une Pull Request. Si le projet vous semble utile, une étoile sur le dépôt aide à le faire connaître.
+Le dépôt reste ouvert aux critiques, aux cas réels et aux propositions, par une [Issue](https://github.com/WapsDevs/HC/issues) ou une Pull Request. Leur intégration reste à la discrétion de l'auteur du projet. Si le projet vous semble utile, une étoile sur le dépôt aide à le faire connaître.
 
-Criticism, real-world cases and proposals are welcome: open an [Issue](https://github.com/WapsDevs/HC/issues) or a Pull Request. If you find the project useful, starring the repository helps others find it.
+The repository remains open to criticism, real-world cases and proposals, through an [Issue](https://github.com/WapsDevs/HC/issues) or a Pull Request. Whether they are included is up to the project's author. If you find the project useful, starring the repository helps others find it.
 
 ## Développement / Development
 
