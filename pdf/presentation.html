@@ -1,0 +1,421 @@
+<!doctype html>
+<!--
+  Source du PDF de présentation de HC.
+  Régénérer (Windows, depuis la racine du dépôt) :
+  "C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe" --headless=new --no-pdf-header-footer
+    --print-to-pdf="public\docs\HC_presentation.pdf" "file:///CHEMIN/VERS/Hc/pdf/presentation.html"
+  Les polices viennent de node_modules (lancer npm install au préalable).
+-->
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>HC, contribution humaine dans les œuvres créatives</title>
+<meta name="author" content="Projet HC">
+<meta name="description" content="Présentation de HC, proposition ouverte pour décrire la contribution humaine dans les œuvres créatives.">
+<style>
+  @font-face { font-family: "Inter"; font-weight: 100 900; src: url("../node_modules/@fontsource-variable/inter/files/inter-latin-wght-normal.woff2") format("woff2"); }
+  @font-face { font-family: "Inter"; font-weight: 100 900; src: url("../node_modules/@fontsource-variable/inter/files/inter-latin-ext-wght-normal.woff2") format("woff2"); unicode-range: U+0100-024F, U+2212; }
+  @font-face { font-family: "Source Serif"; font-weight: 200 900; src: url("../node_modules/@fontsource-variable/source-serif-4/files/source-serif-4-latin-wght-normal.woff2") format("woff2"); }
+  @font-face { font-family: "Source Serif"; font-weight: 200 900; src: url("../node_modules/@fontsource-variable/source-serif-4/files/source-serif-4-latin-ext-wght-normal.woff2") format("woff2"); unicode-range: U+0100-024F, U+2212; }
+
+  :root {
+    --ink: #1c2421; --muted: #5b6662; --line: #dcdcd4; --soft: #f3f2ec; --accent: #2f6b55; --paper: #f7f6f2;
+  }
+
+  @page {
+    size: A4;
+    margin: 20mm 20mm 22mm;
+    @bottom-left { content: "HC · Présentation · Version 0.2 · Novembre 2026"; font: 7.5pt "Inter", sans-serif; color: #5b6662; }
+    @bottom-right { content: counter(page); font: 7.5pt "Inter", sans-serif; color: #5b6662; }
+  }
+  @page :first {
+    margin: 0;
+    @bottom-left { content: none; }
+    @bottom-right { content: none; }
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { margin: 0; font: 9.6pt/1.55 "Inter", sans-serif; color: var(--ink); font-feature-settings: "cv11", "ss01"; }
+  h1, h2, h3 { font-family: "Source Serif", Georgia, serif; font-weight: 600; margin: 0; letter-spacing: -0.01em; }
+  h2 { font-size: 21pt; line-height: 1.15; margin-bottom: 4mm; }
+  h3 { font-size: 11.5pt; margin: 6mm 0 1.8mm; }
+  p { margin: 0 0 2.4mm; }
+  a { color: var(--accent); text-decoration: none; }
+  ul, ol { margin: 0 0 2.4mm; padding-left: 4.5mm; }
+  li { margin-bottom: 1mm; }
+  .muted { color: var(--muted); }
+  .small { font-size: 8.4pt; line-height: 1.5; }
+  .lead { font-size: 11.2pt; line-height: 1.55; color: var(--muted); max-width: 140mm; margin-bottom: 6mm; }
+  .eyebrow { font-size: 8.4pt; font-weight: 600; color: var(--accent); margin-bottom: 2mm; }
+  section { break-before: page; }
+  .keep { break-inside: avoid; }
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 8mm; }
+  .note { border-left: 1.5pt solid var(--accent); padding-left: 3.5mm; color: var(--muted); font-size: 8.8pt; margin: 4mm 0; }
+  .rule { border-top: 0.6pt solid var(--line); margin: 5mm 0; }
+
+  /* Badge : même couleur pour les trois niveaux */
+  .badge { display: inline-block; border: 0.8pt solid rgba(28,36,33,.35); border-radius: 3pt; padding: 0.3mm 1.6mm; font-weight: 600; font-size: 8.6pt; letter-spacing: .02em; white-space: nowrap; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 8.8pt; line-height: 1.45; }
+  th { text-align: left; font-weight: 600; font-size: 7.4pt; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); padding: 0 3mm 1.6mm 0; border-bottom: 0.6pt solid var(--line); vertical-align: bottom; }
+  td { padding: 2.2mm 3mm 2.2mm 0; border-bottom: 0.6pt solid var(--line); vertical-align: top; }
+  td.c, th.c { text-align: center; }
+  tr { break-inside: avoid; }
+
+  /* Couverture */
+  .cover { height: 297mm; padding: 28mm 24mm 22mm; background: var(--paper); display: flex; flex-direction: column; }
+  .cover .mark { font-family: "Source Serif", serif; font-weight: 700; font-size: 64pt; line-height: 1; letter-spacing: -0.02em; }
+  .cover .title { font-family: "Source Serif", serif; font-size: 20pt; line-height: 1.2; margin-top: 6mm; max-width: 130mm; }
+  .cover .lead { margin-top: 10mm; }
+  .cover .levels { display: flex; gap: 3mm; margin-top: 4mm; }
+  .cover .status { margin-top: auto; border-top: 0.6pt solid var(--line); padding-top: 5mm; display: grid; grid-template-columns: 1fr auto; gap: 8mm; font-size: 8.6pt; color: var(--muted); }
+  .cover .status strong { color: var(--ink); font-weight: 600; }
+
+  .level { display: grid; grid-template-columns: 14mm 1fr; gap: 4mm; padding: 3.6mm 0; border-bottom: 0.6pt solid var(--line); break-inside: avoid; }
+  .level:first-of-type { border-top: 0.6pt solid var(--line); }
+  .level h3 { margin: 0 0 1.2mm; font-size: 11pt; }
+  .level dl { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5mm 6mm; margin: 2mm 0 0; font-size: 8.6pt; }
+  .level dt { color: var(--muted); font-size: 7.6pt; }
+  .level dd { margin: 0; }
+
+  .steps { list-style: none; padding: 0; counter-reset: s; }
+  .steps li { counter-increment: s; display: grid; grid-template-columns: 6mm 1fr; margin-bottom: 1.6mm; }
+  .steps li::before { content: counter(s); font-family: "Source Serif", serif; color: var(--accent); font-weight: 600; }
+  .q { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm 8mm; }
+  .q div { break-inside: avoid; }
+  .q b { font-weight: 600; display: block; }
+  .compact td { padding: 1.5mm 3mm 1.5mm 0; font-size: 8.4pt; }
+  .compact-sec h3 { margin-top: 4.5mm; }
+  .compact-sec .steps li { margin-bottom: 1mm; }
+  .sources li { font-size: 8pt; line-height: 1.45; margin-bottom: 1.2mm; }
+</style>
+</head>
+<body>
+
+<!-- Couverture -->
+<div class="cover">
+  <div class="mark">HC</div>
+  <div class="title">Contribution humaine dans les œuvres créatives</div>
+  <p class="lead">Une proposition ouverte pour indiquer au public la place des personnes dans la création d’un film, d’un jeu, d’un livre ou d’une bande dessinée.</p>
+  <div class="levels"><span class="badge">HC−</span><span class="badge">HC</span><span class="badge">HC+</span></div>
+  <p class="small muted" style="margin-top:3mm;max-width:120mm">Trois niveaux qui décrivent la contribution humaine. Jamais la qualité d’une œuvre.</p>
+  <div class="status">
+    <p style="margin:0"><strong>Proposition exploratoire.</strong> Ce document est publié pour être discuté et testé. HC n’est ni une norme officielle, ni une certification, ni un label.</p>
+    <p style="margin:0;text-align:right">Présentation, version 0.2<br>Novembre 2026<br><a href="https://wapsdevs.github.io/HC/">wapsdevs.github.io/HC</a></p>
+  </div>
+</div>
+
+<!-- 1. Le principe -->
+<section>
+  <p class="eyebrow">1. Le principe</p>
+  <h2>Dire simplement qui a fait quoi</h2>
+  <p class="lead">HC résume en un code court la place que les personnes ont prise dans la conception et la fabrication d’une œuvre, et celle qu’y a prise l’IA générative.</p>
+  <p>C’est un repère facultatif destiné au public. Il ne donne pas de note et ne dit à personne ce qu’il doit aimer, regarder ou acheter.</p>
+  <p>Les outils génératifs changent la façon de créer. Il est souvent difficile de savoir ce qu’ils ont produit dans une œuvre. HC propose des mots communs pour le dire, sans opposer la création humaine à la technologie.</p>
+
+  <div class="cols keep" style="margin-top:6mm">
+    <div>
+      <h3 style="margin-top:0">Ce que HC indique</h3>
+      <ul>
+        <li>Qui a pris les décisions créatives.</li>
+        <li>Qui a fabriqué ce que l’on voit, lit ou entend.</li>
+        <li>Si la déclaration a été vérifiée par quelqu’un d’indépendant.</li>
+      </ul>
+    </div>
+    <div>
+      <h3 style="margin-top:0">Ce que HC n’indique pas</h3>
+      <ul class="muted">
+        <li>Si l’œuvre est bonne, belle ou originale.</li>
+        <li>Si l’IA a été utilisée légalement ou de façon éthique.</li>
+        <li>Les conditions de travail ou la rémunération des artistes.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="rule"></div>
+  <h3 style="margin-top:0">À qui HC s’adresse</h3>
+  <table>
+    <tr><td style="width:42mm"><b>Le public</b></td><td>Comprendre en une ligne comment une œuvre a été faite.</td></tr>
+    <tr><td><b>Les créateurs et les studios</b></td><td>Décrire leur méthode avec des mots partagés, quelle qu’elle soit.</td></tr>
+    <tr><td><b>Les plateformes et les éditeurs</b></td><td>Afficher une information claire sans en faire un argument de vente.</td></tr>
+    <tr><td><b>Les chercheurs</b></td><td>Tester la grille, la critiquer et l’améliorer.</td></tr>
+  </table>
+
+  <div class="note">HC s’applique de la même façon à un auteur seul, une petite équipe ou un grand studio. La taille de la structure ne change pas la lecture des niveaux.</div>
+</section>
+
+<!-- 2. Les niveaux -->
+<section>
+  <p class="eyebrow">2. Les niveaux</p>
+  <h2>HC−, HC et HC+</h2>
+  <p class="lead">Chaque niveau décrit une manière de travailler. Aucun n’est meilleur qu’un autre, et aucun ne dit si l’œuvre est réussie.</p>
+
+  <div class="level">
+    <div><span class="badge">HC−</span></div>
+    <div>
+      <h3>Contribution humaine limitée</h3>
+      <p>Une grande partie des images, textes, sons ou plans finaux vient d’un système génératif. Les personnes définissent l’intention, trient, assemblent et valident.</p>
+      <dl>
+        <dt>Exemple type</dt><dt>Ce que cela ne veut pas dire</dt>
+        <dd>Un court métrage dont les plans sont générés à partir d’instructions. La réalisatrice choisit les plans, les monte et dirige les voix.</dd>
+        <dd>Que l’œuvre est moins soignée, moins personnelle ou faite sans effort.</dd>
+      </dl>
+    </div>
+  </div>
+  <div class="level">
+    <div><span class="badge">HC</span></div>
+    <div>
+      <h3>Contribution humaine partagée</h3>
+      <p>Les personnes conçoivent une part importante de l’œuvre et transforment ce que produit l’IA. L’IA générative fournit aussi des éléments visibles dans le résultat.</p>
+      <dl>
+        <dt>Exemple type</dt><dt>Ce que cela ne veut pas dire</dt>
+        <dd>Un jeu dont les règles, les niveaux et le code sont conçus par l’équipe, avec de nombreuses illustrations générées puis retouchées.</dd>
+        <dd>Un compromis tiède ou un niveau « moyen ».</dd>
+      </dl>
+    </div>
+  </div>
+  <div class="level">
+    <div><span class="badge">HC+</span></div>
+    <div>
+      <h3>Contribution humaine dominante</h3>
+      <p>L’écriture, la conception et la fabrication sont pour l’essentiel humaines. L’IA générative intervient peu, sur des éléments secondaires ou localisés.</p>
+      <dl>
+        <dt>Exemple type</dt><dt>Ce que cela ne veut pas dire</dt>
+        <dd>Une bande dessinée dessinée à la main, dont quelques décors de fond ont été générés puis repeints.</dd>
+        <dd>Qu’aucun logiciel n’a été utilisé, ou que l’œuvre est de meilleure qualité.</dd>
+      </dl>
+    </div>
+  </div>
+
+  <h3>Lire un niveau en quatre questions</h3>
+  <table class="keep">
+    <tr><th>Question</th><th class="c"><span class="badge">HC−</span></th><th class="c"><span class="badge">HC</span></th><th class="c"><span class="badge">HC+</span></th></tr>
+    <tr><td>Qui prend les décisions créatives ?</td><td class="c">Partagé</td><td class="c">Surtout humain</td><td class="c">Surtout humain</td></tr>
+    <tr><td>Qui produit les éléments conservés ?</td><td class="c">Surtout génératif</td><td class="c">Partagé</td><td class="c">Surtout humain</td></tr>
+    <tr><td>Qui transforme les sorties générées ?</td><td class="c">Partagé</td><td class="c">Surtout humain</td><td class="c muted">Peu concerné</td></tr>
+    <tr><td>Qui sélectionne et valide ?</td><td class="c">Surtout humain</td><td class="c">Surtout humain</td><td class="c">Surtout humain</td></tr>
+  </table>
+  <p class="small muted" style="margin-top:2mm">Profil typique. Quelqu’un décide toujours de publier : c’est surtout la production des éléments qui distingue les niveaux.</p>
+</section>
+
+<section>
+  <p class="eyebrow">2. Les niveaux</p>
+  <h2>Statut, badge et chiffres</h2>
+
+  <h3 style="margin-top:2mm">Un niveau s’affiche toujours avec son statut</h3>
+  <table>
+    <tr><td style="width:32mm"><b>Déclaré</b></td><td>Le producteur ou l’auteur a rempli la déclaration. Personne d’autre ne l’a encore contrôlée.</td></tr>
+    <tr><td><b>Vérifié</b></td><td>Un évaluateur indépendant a examiné la déclaration et les justificatifs.</td></tr>
+    <tr><td><b>Non vérifié</b></td><td>Les informations manquent ou n’ont pas pu être confirmées. HC+ n’est jamais attribué par défaut.</td></tr>
+  </table>
+
+  <h3>Un badge discret</h3>
+  <ul>
+    <li>Même couleur et même taille pour les trois niveaux.</li>
+    <li>Sur la fiche de l’œuvre, il est accompagné du libellé en toutes lettres et du statut, pour que « + » ne soit pas lu comme « mieux ».</li>
+    <li>Le « − » est un vrai signe moins, plus lisible qu’un tiret. Les lecteurs d’écran annoncent « HC moins ».</li>
+    <li>Ni coche, ni bouclier, ni médaille : ces symboles feraient croire à une certification.</li>
+  </ul>
+
+  <div class="keep" style="margin-top:5mm;padding:5mm;background:var(--soft);border-radius:3pt">
+    <p class="small muted" style="margin-bottom:2mm">Exemple d’affichage sur une fiche (œuvre fictive)</p>
+    <p style="margin:0 0 1mm"><b style="font-family:'Source Serif',serif;font-size:12pt">Le Phare des marées</b> &nbsp;<span class="badge">HC+</span></p>
+    <p style="margin:0 0 1mm">Contribution humaine dominante. Scénario, dessin et animation réalisés par l’équipe. L’IA générative a produit des textures de fond, repeintes ensuite.</p>
+    <p class="small muted" style="margin:0">Déclaré par le studio, non vérifié.</p>
+  </div>
+
+  <h3>Pourquoi pas de pourcentage</h3>
+  <p>Un chiffre comme « 80 % humain » semble précis, mais il ne l’est pas. Faudrait-il compter les heures, les fichiers, les plans ou les décisions ?</p>
+  <p>Une décision de cinq minutes peut orienter tout un film, quand des heures d’exécution pèsent peu sur le résultat. Les niveaux restent donc qualitatifs. Des seuils pourront être discutés après des tests sur des œuvres réelles.</p>
+</section>
+
+<!-- 3. Méthode -->
+<section>
+  <p class="eyebrow">3. Méthode</p>
+  <h2>Comment on évalue une œuvre</h2>
+  <p class="lead">HC regarde les étapes réelles de fabrication et pose les mêmes questions à chacune. Le niveau final se justifie par écrit.</p>
+
+  <h3 style="margin-top:0">Principes</h3>
+  <div class="q">
+    <div><b>Neutre sur les méthodes</b>Aucune façon de créer n’est présentée comme supérieure.</div>
+    <div><b>Séparé de la qualité</b>Le niveau ne dit rien du talent ni de l’intérêt de l’œuvre.</div>
+    <div><b>Fondé sur le pipeline réel</b>On décrit les étapes vraiment suivies, pas un modèle imposé.</div>
+    <div><b>Centré sur l’IA générative</b>Les logiciels classiques ne changent pas le niveau.</div>
+    <div><b>Prudent</b>Sans preuve suffisante, on affiche « non vérifié » plutôt qu’un niveau flatteur.</div>
+    <div><b>Ouvert</b>Les règles sont publiques et peuvent évoluer.</div>
+  </div>
+
+  <h3>D’abord, le périmètre</h3>
+  <p>On évalue une œuvre précise : un film, une saison, un livre, un jeu dans une version donnée. Une franchise ne reçoit pas un niveau unique, et une mise à jour majeure peut changer le niveau. Les contenus tiers sont signalés : musique sous licence, banques d’images, assets achetés, sous-traitance.</p>
+
+  <h3>Ce qui compte</h3>
+  <div class="cols keep">
+    <div>
+      <p class="small" style="font-weight:600;margin-bottom:1.5mm">Pris en compte</p>
+      <ul class="small">
+        <li>Texte, image, vidéo, voix, musique ou modèle 3D générés et conservés dans l’œuvre.</li>
+        <li>Code généré qui définit des mécaniques ou des contenus.</li>
+        <li>Réécriture ou transformation générative d’un élément créatif.</li>
+        <li>Contenu généré pendant l’utilisation, par exemple des dialogues produits en direct.</li>
+      </ul>
+    </div>
+    <div>
+      <p class="small muted" style="font-weight:600;margin-bottom:1.5mm">Pas pris en compte par défaut</p>
+      <ul class="small muted">
+        <li>Montage, rendu, étalonnage, mixage.</li>
+        <li>Retouche déterministe, débruitage, mise à l’échelle technique.</li>
+        <li>Capture de mouvement, interpolation classique.</li>
+        <li>Automatisation de tâches, correcteur orthographique, suivi de production.</li>
+      </ul>
+    </div>
+  </div>
+  <p class="small muted">C’est la fonction de l’outil qui compte, pas son nom commercial.</p>
+
+  <h3>Quatre questions pour chaque étape</h3>
+  <div class="q">
+    <div><b>Décider</b>Qui choisit l’intention, la direction, ce qui est gardé ou rejeté ?</div>
+    <div><b>Produire</b>Qui fabrique les éléments présents dans l’œuvre finale ?</div>
+    <div><b>Transformer</b>Les sorties générées sont-elles reprises en profondeur, ou gardées telles quelles ?</div>
+    <div><b>Valider</b>Qui assume la sélection et l’approbation finale ?</div>
+  </div>
+</section>
+
+<section>
+  <p class="eyebrow">3. Méthode</p>
+  <h2>Du détail au niveau</h2>
+
+  <ol class="steps" style="margin-top:2mm">
+    <li><span>Lister les étapes réellement utilisées.</span></li>
+    <li><span>Pour chacune, répondre aux quatre questions : surtout humain, partagé ou surtout génératif.</span></li>
+    <li><span>Repérer les étapes qui pèsent le plus dans ce que le public perçoit de l’œuvre.</span></li>
+    <li><span>Proposer un niveau et le justifier en deux ou trois phrases.</span></li>
+    <li><span>En cas de doute, ne pas attribuer HC+ et indiquer « non vérifié ».</span></li>
+  </ol>
+  <div class="note">L’étape 3 est une hypothèse à tester. Le poids d’une étape varie : les dialogues comptent beaucoup dans un film d’animation, moins dans un jeu de stratégie.</div>
+
+  <h3>Exemple de fiche</h3>
+  <table class="keep">
+    <tr><th>Étape</th><th>Décider</th><th>Produire</th><th>Transformer</th><th>Valider</th></tr>
+    <tr><td><b>Scénario</b></td><td>Humain</td><td>Humain</td><td class="muted">Rien à reprendre</td><td>Humain</td></tr>
+    <tr><td><b>Storyboard</b></td><td>Humain</td><td style="color:var(--accent)">Partagé</td><td>Humain</td><td>Humain</td></tr>
+    <tr><td><b>Décors</b></td><td>Humain</td><td style="color:var(--accent)">Génératif</td><td>Humain</td><td>Humain</td></tr>
+    <tr><td><b>Personnages et animation</b></td><td>Humain</td><td>Humain</td><td class="muted">Rien à reprendre</td><td>Humain</td></tr>
+    <tr><td><b>Bande originale</b></td><td>Humain</td><td>Humain</td><td class="muted">Rien à reprendre</td><td>Humain</td></tr>
+  </table>
+  <p style="margin-top:2.5mm"><b>Niveau proposé : HC+.</b> Les décors de fond sont générés puis repeints. Le reste est conçu et fabriqué par l’équipe.</p>
+
+  <h3>Génération ou assistance ?</h3>
+  <p>Une image générée et gardée telle quelle n’a pas le même rôle qu’un outil qui nettoie une ligne. Une sortie générée puis entièrement redessinée s’évalue sur le résultat final et sur le travail de reprise : elle n’est ni « 100 % IA » ni « 100 % humaine » d’office.</p>
+  <p>Une voix de synthèse produite avec l’accord d’un comédien reste un contenu génératif. Le consentement se signale à part, car HC ne mesure pas l’éthique.</p>
+
+  <h3>Ce qu’il n’est pas utile de publier</h3>
+  <p>Ni secrets de fabrication, ni prompts, ni données personnelles. Un registre confidentiel peut être présenté au seul évaluateur.</p>
+</section>
+
+<!-- 4. Secteurs -->
+<section>
+  <p class="eyebrow">4. Secteurs</p>
+  <h2>Un même cadre, des métiers différents</h2>
+  <p class="lead">Chaque secteur a sa propre chaîne de fabrication. Ces repères servent de point de départ et s’adaptent à chaque projet.</p>
+
+  <table>
+    <tr><th style="width:34mm">Secteur</th><th>Étapes à examiner</th><th style="width:58mm">Point d’attention</th></tr>
+    <tr><td><b>Cinéma et animation</b></td><td>Écriture, storyboard et animatique, design et assets, animation et effets, montage et finition.</td><td>Un générique ou un plan isolé peut être évalué à part.</td></tr>
+    <tr><td><b>Jeu vidéo</b></td><td>Game design, narration, art et audio, programmation, intégration et tests.</td><td>La génération procédurale classique n’est pas de l’IA générative. Un jeu qui évolue se déclare par version.</td></tr>
+    <tr><td><b>Bande dessinée et manga</b></td><td>Scénario, découpage, crayonné et encrage, décors et trames, couleur, lettrage, couverture.</td><td>Chez un auteur seul, les étapes se confondent mais restent distinctes dans la déclaration.</td></tr>
+    <tr><td><b>Édition et littérature</b></td><td>Écriture, travail éditorial, correction, traduction, couverture et illustrations.</td><td>Un correcteur orthographique ne compte pas. La réécriture générative de paragraphes compte.</td></tr>
+    <tr><td><b>Publicité et communication</b></td><td>Brief, concept, préproduction, production, postproduction et déclinaisons.</td><td>Une campagne compte souvent des dizaines de versions : le périmètre dit lesquelles sont évaluées.</td></tr>
+    <tr><td><b>Architecture et design</b></td><td>Programme, conception, coordination technique, construction, livraison.</td><td>Hypothèse : HC concernerait surtout les images de concours et la conception.</td></tr>
+    <tr><td><b>Éducation et vulgarisation</b></td><td>Analyse, conception, développement, vérification scientifique, diffusion.</td><td>Proposition : une mention distincte sur la relecture scientifique humaine.</td></tr>
+  </table>
+
+  <p class="small muted" style="margin-top:4mm">Les étapes s’appuient sur des référentiels professionnels : Toon Boom pour l’animation, le processus créatif d’Ubisoft pour le jeu vidéo, Web Japan pour le manga, le RIBA Plan of Work pour l’architecture, le modèle ADDIE pour la formation. Les usages possibles de l’IA à chaque étape sont détaillés sur le site, à titre d’exemples.</p>
+</section>
+
+<!-- 5. Vérification -->
+<section class="compact-sec">
+  <p class="eyebrow">5. Vérification</p>
+  <h2>Déclarer, documenter, contrôler</h2>
+  <p class="lead">Un badge n’a de valeur que si l’on peut vérifier ce qu’il affirme. HC distingue donc ce qui est déclaré de ce qui est contrôlé.</p>
+
+  <ol class="steps">
+    <li><span><b>Déclaration.</b> Le producteur ou l’auteur remplit une fiche, étape par étape.</span></li>
+    <li><span><b>Justificatifs.</b> Il garde des traces proportionnées : versions de travail, suivi de production, exemples de sorties, validations.</span></li>
+    <li><span><b>Contrôle.</b> Un évaluateur indépendant vérifie la cohérence. L’ampleur des contrôles dépend de la taille du projet et du risque.</span></li>
+    <li><span><b>Publication.</b> Le public voit le niveau et le statut. La fiche détaillée reste accessible par un lien ou un QR code.</span></li>
+    <li><span><b>Recours.</b> Toute personne peut contester. Le niveau peut être corrigé ou retiré en cas de fausse déclaration.</span></li>
+  </ol>
+
+  <h3>Une preuve proportionnée</h3>
+  <table class="compact">
+    <tr><td style="width:32mm"><b>Auteur seul</b></td><td>Fichiers de travail datés, quelques captures d’étapes, liste des outils utilisés.</td></tr>
+    <tr><td><b>Petite équipe</b></td><td>Suivi de production existant, échanges de validation, journal des outils génératifs.</td></tr>
+    <tr><td><b>Grand studio</b></td><td>Registre par département, contrats des prestataires, contrôle par échantillon.</td></tr>
+  </table>
+  <p class="small muted" style="margin-top:2mm">Ce sont des pistes. Le niveau de preuve exigible reste à définir avec les personnes concernées.</p>
+
+  <h3>Qui vérifie</h3>
+  <p>Personne ne devrait certifier ses propres œuvres, ni fixer seul les règles pour les autres. À terme, HC devrait être porté par une structure indépendante où siégeraient créateurs, studios, plateformes, chercheurs, public et spécialistes de l’audit, avec des règles et des décisions publiques.</p>
+  <div class="note">Cette structure n’existe pas aujourd’hui. Aucune déclaration n’est actuellement vérifiée selon HC.</div>
+
+  <h3>Ce qui existe déjà</h3>
+  <table class="compact">
+    <tr><td style="width:46mm"><b>Règlement européen sur l’IA, article 50</b></td><td>Impose de signaler certains contenus générés ou manipulés, comme les hypertrucages.</td></tr>
+    <tr><td><b>C2PA et vocabulaire IPTC</b></td><td>Standards techniques qui attachent à un fichier son historique de création. HC pourrait s’appuyer sur ces données.</td></tr>
+    <tr><td><b>Déclarations sur Steam</b></td><td>Les développeurs signalent les contenus générés présents dans le jeu et ceux générés pendant la partie.</td></tr>
+    <tr><td><b>Règles des Oscars</b></td><td>Pour les films de 2026, les prix d’interprétation et de scénario exigent un travail humain.</td></tr>
+    <tr><td><b>Copyright Office américain</b></td><td>Rappelle que le droit d’auteur suppose une création humaine, appréciée au cas par cas.</td></tr>
+  </table>
+  <p style="margin-top:2.5mm">HC ne remplace aucun de ces dispositifs. Son objet est différent : décrire au public, en une ligne, la place des personnes dans toute l’œuvre.</p>
+</section>
+
+<!-- 6. Limites et suite -->
+<section>
+  <p class="eyebrow">6. Limites et suite</p>
+  <h2>Ce qui reste à construire</h2>
+
+  <h3 style="margin-top:2mm">Limites assumées</h3>
+  <ul>
+    <li>Les définitions sont qualitatives. Deux évaluateurs peuvent arriver à des niveaux différents.</li>
+    <li>Sans vérification indépendante, un niveau repose sur la bonne foi du déclarant.</li>
+    <li>Les secteurs n’ont pas tous le même poids d’étapes, ce qui rend les comparaisons délicates.</li>
+    <li>HC ne dit rien du droit d’auteur, des données d’entraînement ni de l’éthique des outils.</li>
+  </ul>
+
+  <h3>Questions ouvertes</h3>
+  <ul>
+    <li>Comment traiter les assets achetés, les bibliothèques et les contenus réutilisés ?</li>
+    <li>Quel niveau de preuve demander à un auteur seul sans alourdir son travail ?</li>
+    <li>Comment déclarer un jeu en ligne dont le contenu change chaque saison ?</li>
+    <li>Faut-il une mention distincte pour le contenu généré pendant l’utilisation ?</li>
+    <li>Qui financerait une structure indépendante, et comment éviter les conflits d’intérêts ?</li>
+  </ul>
+
+  <h3>Prochaine étape : tester</h3>
+  <ol class="steps">
+    <li><span>Réunir 8 à 15 personnes aux profils variés : animation, jeu vidéo, bande dessinée, indépendants, production, recherche, droit, public.</span></li>
+    <li><span>Appliquer la grille à 10 à 20 œuvres réalisées de façons différentes.</span></li>
+    <li><span>Faire classer les mêmes œuvres par plusieurs personnes et mesurer leurs désaccords.</span></li>
+    <li><span>Revoir les définitions avant toute idée de seuil ou de certification.</span></li>
+  </ol>
+
+  <h3>Participer</h3>
+  <p>Critiques, cas concrets et propositions sont les bienvenus, y compris s’ils remettent en cause l’approche. Les échanges se font sur GitHub.</p>
+  <p>Site : <a href="https://wapsdevs.github.io/HC/">wapsdevs.github.io/HC</a><br>Dépôt et discussions : <a href="https://github.com/WapsDevs/HC/issues">github.com/WapsDevs/HC/issues</a></p>
+
+  <div class="rule"></div>
+  <h3 style="margin-top:0">Sources principales</h3>
+  <ul class="sources">
+    <li><a href="https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-50">Article 50 du règlement européen sur l’IA</a>, AI Act Service Desk, Commission européenne.</li>
+    <li><a href="https://spec.c2pa.org/specifications/specifications/2.3/specs/C2PA_Specification.html">Content Credentials: C2PA Technical Specification 2.3</a>, C2PA, 2026.</li>
+    <li><a href="https://www.copyright.gov/ai/">Copyright and Artificial Intelligence</a>, U.S. Copyright Office, 2025.</li>
+    <li><a href="https://learn.toonboom.com/modules/the-animation-pipeline/topic/the-storyboard-pipeline">The Storyboard Pipeline</a>, Toon Boom Learn.</li>
+    <li><a href="https://www.ubisoft.com/fr-fr/company/how-we-make-games/creative-process">Processus créatif</a>, Ubisoft.</li>
+    <li><a href="https://riba.org/work/insights-and-resources/riba-plan-of-work">RIBA Plan of Work</a>, Royal Institute of British Architects.</li>
+  </ul>
+  <p class="small muted">La liste complète des sources et les études de cas sont sur le site.</p>
+</section>
+
+</body>
+</html>

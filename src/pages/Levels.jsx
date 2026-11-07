@@ -74,7 +74,7 @@ const T = {
       'Le signe « − » est un vrai signe moins, plus lisible qu’un tiret. Les lecteurs d’écran annoncent « HC moins ».',
       'Pas d’icône de validation, de bouclier ou de médaille : cela ferait croire à une certification.',
     ],
-    badgeNote: 'Proposition d’amélioration par rapport au document de travail : afficher systématiquement le libellé et le statut à côté du code, pour éviter que « + » soit lu comme « mieux ».',
+    badgeNote: 'Changement par rapport à la première version : afficher systématiquement le libellé et le statut à côté du code, pour éviter que « + » soit lu comme « mieux ».',
   },
   en: {
     eyebrow: 'Levels',
@@ -132,7 +132,7 @@ const T = {
       'The “−” is a true minus sign, easier to read than a hyphen. Screen readers announce “HC minus”.',
       'No check mark, shield or medal: these would suggest a certification.',
     ],
-    badgeNote: 'Suggested change from the working paper: always show the full label and status next to the code, so that “+” is not read as “better”.',
+    badgeNote: 'Change from the first version: always show the full label and status next to the code, so that “+” is not read as “better”.',
   },
 }
 

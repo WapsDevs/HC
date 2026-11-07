@@ -9,7 +9,7 @@ HC is an open proposal to show how much of a creative work was made by people. T
 > Proposition exploratoire. HC n'est ni une norme officielle ni une certification.
 > Exploratory proposal. HC is not an official standard or a certification.
 
-**Accès rapide / Quick links :** [Les niveaux / Levels](https://wapsdevs.github.io/HC/#/fr/levels) · [Méthode / Method](https://wapsdevs.github.io/HC/#/fr/method) · [Démo streaming / Streaming demo](https://wapsdevs.github.io/HC/#/fr/demo) · [Document de travail v0.1 (PDF)](public/docs/HC_document_de_travail_v0_1.pdf)
+**Accès rapide / Quick links :** [Les niveaux / Levels](https://wapsdevs.github.io/HC/#/fr/levels) · [Méthode / Method](https://wapsdevs.github.io/HC/#/fr/method) · [Démo streaming / Streaming demo](https://wapsdevs.github.io/HC/#/fr/demo) · [Présentation (PDF)](https://wapsdevs.github.io/HC/docs/HC_presentation.pdf)
 
 ## Participer / Contributing
 

@@ -78,4 +78,4 @@ export const NAV = [
 export const PAGES = NAV.flatMap((n) => n.items ?? [n])
 
 export const REPO_URL = 'https://github.com/WapsDevs/HC'
-export const PDF_URL = `${import.meta.env.BASE_URL}docs/HC_document_de_travail_v0_1.pdf`
+export const PDF_URL = `${import.meta.env.BASE_URL}docs/HC_presentation.pdf`

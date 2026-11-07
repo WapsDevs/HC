@@ -46,7 +46,7 @@ const T = {
       'HC est une piste de travail, publiée pour être discutée. Ce n’est ni une norme, ni un label officiel, ni une certification.',
       'Les définitions doivent encore être testées sur des œuvres réelles, avec des professionnels de plusieurs métiers.',
     ],
-    pdf: 'Lire le document de travail (PDF, FR)',
+    pdf: 'Lire la présentation de HC (PDF)',
     contribute: 'Participer sur GitHub',
   },
   en: {
@@ -91,7 +91,7 @@ const T = {
       'HC is a working idea, published to be discussed. It is not a standard, an official label or a certification.',
       'The definitions still need to be tested on real works, with professionals from several fields.',
     ],
-    pdf: 'Read the working paper (PDF, in French)',
+    pdf: 'Read the HC presentation (PDF, in French)',
     contribute: 'Contribute on GitHub',
   },
 }
